@@ -47,7 +47,7 @@ export default function SupportTickets() {
       if (error) throw error;
     },
     onSuccess: () => {
-      toast.success("Support ticket created successfully");
+      toast.success("Ticket de support créé avec succès");
       queryClient.invalidateQueries({ queryKey: ["support-tickets"] });
       setSubject("");
       setDescription("");
@@ -55,14 +55,14 @@ export default function SupportTickets() {
       setIsCreating(false);
     },
     onError: (error) => {
-      toast.error("Failed to create ticket: " + error.message);
+      toast.error("Échec de la création du ticket : " + error.message);
     },
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!subject.trim() || !description.trim()) {
-      toast.error("Please fill in all fields");
+      toast.error("Veuillez remplir tous les champs");
       return;
     }
     createTicket.mutate();
@@ -90,42 +90,42 @@ export default function SupportTickets() {
     <div className="container mx-auto p-6 space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold">Support Tickets</h1>
-            <p className="text-muted-foreground">Request help from our support team</p>
+            <h1 className="text-3xl font-bold">Tickets de Support</h1>
+            <p className="text-muted-foreground">Demandez de l'aide à notre équipe de support</p>
           </div>
           <Button onClick={() => setIsCreating(!isCreating)}>
             <Plus className="w-4 h-4 mr-2" />
-            New Ticket
+            Nouveau Ticket
           </Button>
         </div>
 
         {isCreating && (
           <Card>
             <CardHeader>
-              <CardTitle>Create Support Ticket</CardTitle>
-              <CardDescription>Describe your issue and we'll help you resolve it</CardDescription>
+              <CardTitle>Créer un Ticket de Support</CardTitle>
+              <CardDescription>Décrivez votre problème et nous vous aiderons à le résoudre</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="text-sm font-medium">Subject</label>
+                  <label className="text-sm font-medium">Sujet</label>
                   <Input
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="Brief description of your issue"
+                    placeholder="Brève description de votre problème"
                     required
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Priority</label>
+                  <label className="text-sm font-medium">Priorité</label>
                   <Select value={priority} onValueChange={(value: any) => setPriority(value)}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="low">Low</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="high">High</SelectItem>
+                      <SelectItem value="low">Faible</SelectItem>
+                      <SelectItem value="medium">Moyenne</SelectItem>
+                      <SelectItem value="high">Élevée</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -134,17 +134,17 @@ export default function SupportTickets() {
                   <Textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Provide detailed information about your issue"
+                    placeholder="Fournissez des informations détaillées sur votre problème"
                     rows={5}
                     required
                   />
                 </div>
                 <div className="flex gap-2">
                   <Button type="submit" disabled={createTicket.isPending}>
-                    {createTicket.isPending ? "Creating..." : "Submit Ticket"}
+                    {createTicket.isPending ? "Création..." : "Soumettre le Ticket"}
                   </Button>
                   <Button type="button" variant="outline" onClick={() => setIsCreating(false)}>
-                    Cancel
+                    Annuler
                   </Button>
                 </div>
               </form>
@@ -153,9 +153,9 @@ export default function SupportTickets() {
         )}
 
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold">My Tickets</h2>
+          <h2 className="text-xl font-semibold">Mes Tickets</h2>
           {isLoading ? (
-            <p>Loading tickets...</p>
+            <p>Chargement des tickets...</p>
           ) : tickets && tickets.length > 0 ? (
             tickets.map((ticket) => (
               <Card key={ticket.id}>
@@ -167,7 +167,7 @@ export default function SupportTickets() {
                         {ticket.subject}
                       </CardTitle>
                       <CardDescription>
-                        Created {new Date(ticket.created_at).toLocaleDateString()}
+                        Créé le {new Date(ticket.created_at).toLocaleDateString()}
                       </CardDescription>
                     </div>
                     <div className="flex gap-2">
@@ -188,7 +188,7 @@ export default function SupportTickets() {
           ) : (
             <Card>
               <CardContent className="py-8 text-center text-muted-foreground">
-                No tickets yet. Click "New Ticket" to create one.
+                Aucun ticket pour le moment. Cliquez sur "Nouveau Ticket" pour en créer un.
               </CardContent>
             </Card>
           )}

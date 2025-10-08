@@ -118,8 +118,8 @@ const OrderAccessoriesDetail = () => {
     } catch (error: any) {
       console.error("Error fetching order details:", error);
       toast({
-        title: "Error",
-        description: "Failed to fetch order details",
+        title: "Erreur",
+        description: "Échec de la récupération des détails de la commande",
         variant: "destructive",
       });
     } finally {
@@ -164,7 +164,7 @@ const OrderAccessoriesDetail = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="text-lg">Loading order details...</div>
+        <div className="text-lg">Chargement des détails de la commande...</div>
       </div>
     );
   }
@@ -172,13 +172,13 @@ const OrderAccessoriesDetail = () => {
   if (!order) {
     return (
       <div className="container mx-auto py-6">
-        <Button variant="ghost" onClick={() => navigate(-1)} className="mb-4">
+          <Button variant="ghost" onClick={() => navigate(-1)} className="mb-4">
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back
+          Retour
         </Button>
         <Card>
           <CardContent className="py-8">
-            <p className="text-center text-muted-foreground">Order not found</p>
+            <p className="text-center text-muted-foreground">Commande non trouvée</p>
           </CardContent>
         </Card>
       </div>
@@ -190,11 +190,11 @@ const OrderAccessoriesDetail = () => {
       <div className="flex items-center gap-4">
         <Button variant="ghost" onClick={() => navigate(-1)}>
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back
+          Retour
         </Button>
         <div>
-          <h1 className="text-3xl font-bold">Order Accessories Details</h1>
-          <p className="text-muted-foreground">Order {order.order_number}</p>
+          <h1 className="text-3xl font-bold">Détails des accessoires de la commande</h1>
+          <p className="text-muted-foreground">Commande {order.order_number}</p>
         </div>
       </div>
 
@@ -202,15 +202,15 @@ const OrderAccessoriesDetail = () => {
         {/* Customer Information */}
         <Card>
           <CardHeader>
-            <CardTitle>Customer Information</CardTitle>
+            <CardTitle>Informations client</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <p className="text-sm text-muted-foreground">Name</p>
+              <p className="text-sm text-muted-foreground">Nom</p>
               <p className="font-medium">{order.customer_name}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Phone</p>
+              <p className="text-sm text-muted-foreground">Téléphone</p>
               <p className="font-medium">{order.customer_phone}</p>
             </div>
             {order.customer_email && (
@@ -221,13 +221,13 @@ const OrderAccessoriesDetail = () => {
             )}
             {order.customer_id_number && (
               <div>
-                <p className="text-sm text-muted-foreground">ID Number</p>
+                <p className="text-sm text-muted-foreground">Numéro d'identité</p>
                 <p className="font-medium">{order.customer_id_number}</p>
               </div>
             )}
             {order.customer_address && (
               <div>
-                <p className="text-sm text-muted-foreground">Address</p>
+                <p className="text-sm text-muted-foreground">Adresse</p>
                 <p className="font-medium">{order.customer_address}</p>
               </div>
             )}
@@ -237,21 +237,21 @@ const OrderAccessoriesDetail = () => {
         {/* Vehicle Information */}
         <Card>
           <CardHeader>
-            <CardTitle>Vehicle Information</CardTitle>
+            <CardTitle>Informations véhicule</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             <div>
-              <p className="text-sm text-muted-foreground">Brand & Model</p>
+              <p className="text-sm text-muted-foreground">Marque et modèle</p>
               <p className="font-medium">
                 {order.vehicle_brand} {order.vehicle_model}
               </p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Year</p>
+              <p className="text-sm text-muted-foreground">Année</p>
               <p className="font-medium">{order.vehicle_year}</p>
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Color</p>
+              <p className="text-sm text-muted-foreground">Couleur</p>
               <p className="font-medium">{order.vehicle_color}</p>
             </div>
             {order.vehicle_vin && (
@@ -261,7 +261,7 @@ const OrderAccessoriesDetail = () => {
               </div>
             )}
             <div>
-              <p className="text-sm text-muted-foreground">Order Status</p>
+              <p className="text-sm text-muted-foreground">Statut de la commande</p>
               <div className="mt-1">{getStatusBadge(order.status)}</div>
             </div>
           </CardContent>
@@ -271,27 +271,27 @@ const OrderAccessoriesDetail = () => {
       {/* Accessories List */}
       <Card>
         <CardHeader>
-          <CardTitle>Accessories Details</CardTitle>
+          <CardTitle>Détails des accessoires</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="border rounded-lg">
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Accessory</TableHead>
-                  <TableHead>Reference</TableHead>
-                  <TableHead>Added By</TableHead>
-                  <TableHead className="text-right">Quantity</TableHead>
-                  <TableHead className="text-right">Price HT</TableHead>
-                  <TableHead className="text-right">Price TTC</TableHead>
-                  <TableHead className="text-right">Subtotal</TableHead>
+                  <TableHead>Accessoire</TableHead>
+                  <TableHead>Référence</TableHead>
+                  <TableHead>Ajouté par</TableHead>
+                  <TableHead className="text-right">Quantité</TableHead>
+                  <TableHead className="text-right">Prix HT</TableHead>
+                  <TableHead className="text-right">Prix TTC</TableHead>
+                  <TableHead className="text-right">Sous-total</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {accessories.length === 0 ? (
                   <TableRow>
                     <TableCell colSpan={7} className="text-center text-muted-foreground py-8">
-                      No accessories found for this order
+                      Aucun accessoire trouvé pour cette commande
                     </TableCell>
                   </TableRow>
                 ) : (
@@ -319,7 +319,7 @@ const OrderAccessoriesDetail = () => {
                     ))}
                     <TableRow className="bg-muted/50">
                       <TableCell colSpan={6} className="text-right font-bold">
-                        Total Accessories:
+                        Total des accessoires :
                       </TableCell>
                       <TableCell className="text-right font-bold text-primary text-lg">
                         {formatCurrency(calculateTotal())}

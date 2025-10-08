@@ -72,7 +72,7 @@ const VnOrderDocuments = () => {
       setDocuments(data || []);
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -113,15 +113,15 @@ const VnOrderDocuments = () => {
       if (dbError) throw dbError;
 
       toast({
-        title: "Success",
-        description: "Document uploaded successfully",
+        title: "Succès",
+        description: "Document téléchargé avec succès",
       });
 
       fetchDocuments();
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -150,14 +150,14 @@ const VnOrderDocuments = () => {
       if (dbError) throw dbError;
 
       toast({
-        title: "Success",
-        description: "Document deleted successfully",
+        title: "Succès",
+        description: "Document supprimé avec succès",
       });
 
       fetchDocuments();
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -167,7 +167,7 @@ const VnOrderDocuments = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg">Loading documents...</div>
+        <div className="text-lg">Chargement des documents...</div>
       </div>
     );
   }
@@ -179,19 +179,19 @@ const VnOrderDocuments = () => {
           <ArrowLeft className="h-4 w-4" />
         </Button>
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Order Documents</h2>
-          <p className="text-muted-foreground">Manage documents for this order</p>
+          <h2 className="text-3xl font-bold tracking-tight">Documents de la commande</h2>
+          <p className="text-muted-foreground">Gérer les documents pour cette commande</p>
         </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Upload Document</CardTitle>
+          <CardTitle>Télécharger un document</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex gap-4 items-end">
             <div className="flex-1 space-y-2">
-              <Label htmlFor="documentType">Document Type</Label>
+              <Label htmlFor="documentType">Type de document</Label>
               <Select value={documentType} onValueChange={(value) => setDocumentType(value as Database["public"]["Enums"]["vn_document_type"])}>
                 <SelectTrigger>
                   <SelectValue />
@@ -211,7 +211,7 @@ const VnOrderDocuments = () => {
                 disabled={uploading}
               >
                 <Upload className="mr-2 h-4 w-4" />
-                {uploading ? "Uploading..." : "Upload File"}
+                {uploading ? "Téléchargement..." : "Télécharger le fichier"}
               </Button>
             </div>
           </div>
@@ -234,9 +234,9 @@ const VnOrderDocuments = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Document Name</TableHead>
+                  <TableHead>Nom du document</TableHead>
                   <TableHead>Type</TableHead>
-                  <TableHead>Upload Date</TableHead>
+                  <TableHead>Date de téléchargement</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -244,7 +244,7 @@ const VnOrderDocuments = () => {
                 {documents.length === 0 ? (
                   <TableRow>
                     <TableCell colSpan={4} className="text-center py-8">
-                      No documents uploaded yet
+                      Aucun document téléchargé pour le moment
                     </TableCell>
                   </TableRow>
                 ) : (
@@ -270,7 +270,7 @@ const VnOrderDocuments = () => {
                             variant="ghost"
                             size="icon"
                             onClick={() => window.open(doc.document_url, "_blank")}
-                            title="Download"
+                            title="Télécharger"
                           >
                             <Download className="h-4 w-4" />
                           </Button>
@@ -279,7 +279,7 @@ const VnOrderDocuments = () => {
                             size="icon"
                             onClick={() => handleDelete(doc.id, doc.document_url)}
                             className="text-destructive hover:text-destructive"
-                            title="Delete"
+                            title="Supprimer"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>

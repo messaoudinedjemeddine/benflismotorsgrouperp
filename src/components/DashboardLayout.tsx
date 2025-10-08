@@ -23,6 +23,7 @@ import {
   Settings,
   UserCog,
   ShoppingCart,
+  Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -84,6 +85,16 @@ const DashboardLayout = () => {
         href: '/dashboard/resellers', 
         icon: Store,
         roles: ['sys_admin', 'director', 'magasin']
+      });
+    }
+
+    // Client Visits Section
+    if (hasRole(['sys_admin', 'director'])) {
+      items.push({ 
+        name: 'Client Visits', 
+        href: '/dashboard/client-visits', 
+        icon: Calendar,
+        roles: ['sys_admin', 'director']
       });
     }
 

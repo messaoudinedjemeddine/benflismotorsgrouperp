@@ -59,25 +59,25 @@ const Analytics = () => {
 
   const metrics = [
     {
-      title: "Total Sessions",
+      title: "Sessions Totales",
       value: "48,592",
       change: "+12.5%",
       icon: Eye,
     },
     {
-      title: "Unique Users",
+      title: "Utilisateurs Uniques",
       value: "23,847",
       change: "+8.2%",
       icon: Users,
     },
     {
-      title: "Avg. Session Duration",
+      title: "Durée Moyenne de Session",
       value: "4m 32s",
       change: "+15.3%",
       icon: Clock,
     },
     {
-      title: "Bounce Rate",
+      title: "Taux de Rebond",
       value: "24.8%",
       change: "-3.1%",
       icon: TrendingUp,
@@ -88,9 +88,9 @@ const Analytics = () => {
     <div className="space-y-6 animate-fade-in">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Analytics</h1>
+        <h1 className="text-3xl font-bold text-foreground">Analytiques</h1>
         <p className="text-muted-foreground mt-2">
-          Detailed insights into your website performance and user behavior.
+          Aperçus détaillés sur les performances de votre site web et le comportement des utilisateurs.
         </p>
       </div>
 
@@ -126,17 +126,17 @@ const Analytics = () => {
       {/* Analytics tabs */}
       <Tabs defaultValue="traffic" className="space-y-6">
         <TabsList className="grid w-full grid-cols-4 lg:w-[400px]">
-          <TabsTrigger value="traffic">Traffic</TabsTrigger>
+          <TabsTrigger value="traffic">Trafic</TabsTrigger>
           <TabsTrigger value="sources">Sources</TabsTrigger>
-          <TabsTrigger value="devices">Devices</TabsTrigger>
+          <TabsTrigger value="devices">Appareils</TabsTrigger>
           <TabsTrigger value="pages">Pages</TabsTrigger>
         </TabsList>
 
         <TabsContent value="traffic" className="space-y-6">
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Website Traffic</CardTitle>
-              <CardDescription>Sessions, page views, and users over time</CardDescription>
+              <CardTitle>Trafic du Site Web</CardTitle>
+              <CardDescription>Sessions, pages vues et utilisateurs dans le temps</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={400}>
@@ -194,8 +194,8 @@ const Analytics = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle>Traffic Sources</CardTitle>
-                <CardDescription>Where your visitors come from</CardDescription>
+                <CardTitle>Sources de Trafic</CardTitle>
+                <CardDescription>D'où viennent vos visiteurs</CardDescription>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={300}>
@@ -228,8 +228,8 @@ const Analytics = () => {
 
             <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle>Source Breakdown</CardTitle>
-                <CardDescription>Detailed traffic source metrics</CardDescription>
+                <CardTitle>Répartition des Sources</CardTitle>
+                <CardDescription>Métriques détaillées des sources de trafic</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {sourceData.map((source, index) => (
@@ -254,8 +254,8 @@ const Analytics = () => {
         <TabsContent value="devices" className="space-y-6">
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Device Usage</CardTitle>
-              <CardDescription>Sessions by device type</CardDescription>
+              <CardTitle>Utilisation des Appareils</CardTitle>
+              <CardDescription>Sessions par type d'appareil</CardDescription>
             </CardHeader>
             <CardContent>
               <ResponsiveContainer width="100%" height={300}>
@@ -290,8 +290,8 @@ const Analytics = () => {
         <TabsContent value="pages" className="space-y-6">
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Top Pages</CardTitle>
-              <CardDescription>Most visited pages on your site</CardDescription>
+              <CardTitle>Pages Principales</CardTitle>
+              <CardDescription>Pages les plus visitées de votre site</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -303,11 +303,11 @@ const Analytics = () => {
                     </div>
                     <div className="flex items-center space-x-6 text-sm">
                       <div className="text-center">
-                        <p className="text-muted-foreground">Bounce Rate</p>
+                        <p className="text-muted-foreground">Taux de Rebond</p>
                         <p className="font-medium">{page.bounce}</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-muted-foreground">Avg. Time</p>
+                        <p className="text-muted-foreground">Temps Moyen</p>
                         <p className="font-medium">{page.time}</p>
                       </div>
                     </div>

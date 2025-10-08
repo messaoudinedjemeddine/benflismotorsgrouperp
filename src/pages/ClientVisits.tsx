@@ -73,8 +73,8 @@ const ClientVisits = () => {
     } catch (error) {
       console.error('Error fetching client visits:', error);
       toast({
-        title: "Error",
-        description: `Failed to fetch client visits: ${error.message}`,
+        title: "Erreur",
+        description: `Échec de la récupération des visites clients : ${error.message}`,
         variant: "destructive",
       });
     } finally {
@@ -104,8 +104,8 @@ const ClientVisits = () => {
   const processExcelFile = async () => {
     if (!selectedFile) {
       toast({
-        title: "Error",
-        description: "Please select an Excel file",
+        title: "Erreur",
+        description: "Veuillez sélectionner un fichier Excel",
         variant: "destructive",
       });
       return;
@@ -123,8 +123,8 @@ const ClientVisits = () => {
       // Here you would typically process the Excel file
       // For now, we'll show a success message
       toast({
-        title: "File Uploaded Successfully",
-        description: "Processing client data...",
+        title: "Fichier Téléchargé avec Succès",
+        description: "Traitement des données clients...",
       });
 
       setSelectedFile(null);
@@ -133,14 +133,14 @@ const ClientVisits = () => {
       setTimeout(() => {
         fetchVisits();
         toast({
-          title: "Processing Complete",
-          description: "Client data imported successfully",
+        title: "Traitement Terminé",
+        description: "Données clients importées avec succès",
         });
       }, 2000);
 
     } catch (error: any) {
       toast({
-        title: "Error Uploading File",
+        title: "Erreur de Téléchargement",
         description: error.message,
         variant: "destructive",
       });
@@ -157,14 +157,14 @@ const ClientVisits = () => {
       if (error) throw error;
 
       toast({
-        title: "Note Saved",
-        description: "Note saved successfully",
+        title: "Note Sauvegardée",
+        description: "Note sauvegardée avec succès",
       });
 
       fetchVisits();
     } catch (error: any) {
       toast({
-        title: "Error Saving Note",
+        title: "Erreur de Sauvegarde",
         description: error.message,
         variant: "destructive",
       });
@@ -174,15 +174,15 @@ const ClientVisits = () => {
   const getCategoryBadge = (category: string) => {
     switch (category) {
       case 'less_than_month':
-        return <Badge className="bg-green-500">Less than 1 month</Badge>;
+        return <Badge className="bg-green-500">Moins d'1 mois</Badge>;
       case 'one_to_three_months':
-        return <Badge className="bg-blue-500">1-3 months</Badge>;
+        return <Badge className="bg-blue-500">1-3 mois</Badge>;
       case 'three_to_six_months':
-        return <Badge className="bg-yellow-500">3-6 months</Badge>;
+        return <Badge className="bg-yellow-500">3-6 mois</Badge>;
       case 'six_months_to_year':
-        return <Badge className="bg-orange-500">6 months - 1 year</Badge>;
+        return <Badge className="bg-orange-500">6 mois - 1 an</Badge>;
       case 'more_than_year':
-        return <Badge className="bg-red-500">More than 1 year</Badge>;
+        return <Badge className="bg-red-500">Plus d'1 an</Badge>;
       default:
         return <Badge variant="outline">{category}</Badge>;
     }
@@ -202,20 +202,20 @@ const ClientVisits = () => {
   const sendEmail = (email: string, name: string) => {
     if (!email) {
       toast({
-        title: "No Email Available",
-        description: "This client doesn't have an email registered",
+        title: "Aucun Email Disponible",
+        description: "Ce client n'a pas d'email enregistré",
         variant: "destructive",
       });
       return;
     }
     
-    const subject = encodeURIComponent('Service Center Visit Invitation');
-    const body = encodeURIComponent(`Hello ${name},\n\nWe would like to invite you to visit our service center for a periodic inspection of your car.\n\nThank you`);
+    const subject = encodeURIComponent('Invitation à Visiter le Centre de Service');
+    const body = encodeURIComponent(`Bonjour ${name},\n\nNous aimerions vous inviter à visiter notre centre de service pour une inspection périodique de votre voiture.\n\nMerci`);
     window.open(`mailto:${email}?subject=${subject}&body=${body}`);
   };
 
   const sendWhatsApp = (phone: string, name: string) => {
-    const message = encodeURIComponent(`Hello ${name}, we would like to invite you to visit our service center for a periodic inspection of your car. Thank you`);
+    const message = encodeURIComponent(`Bonjour ${name}, nous aimerions vous inviter à visiter notre centre de service pour une inspection périodique de votre voiture. Merci`);
     window.open(`https://wa.me/${phone.replace(/^0/, '213')}?text=${message}`);
   };
 
@@ -245,26 +245,26 @@ const ClientVisits = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold gradient-text">Client Visits</h1>
+        <h1 className="text-3xl font-bold gradient-text">Visites Clients</h1>
       </div>
 
       <Tabs defaultValue="import" className="w-full">
         <TabsList>
-          <TabsTrigger value="import">Import Data</TabsTrigger>
-          <TabsTrigger value="visits">Manage Visits</TabsTrigger>
+          <TabsTrigger value="import">Importer Données</TabsTrigger>
+          <TabsTrigger value="visits">Gérer les Visites</TabsTrigger>
         </TabsList>
 
         <TabsContent value="import">
           <Card>
             <CardHeader>
-              <CardTitle>Import Client Data</CardTitle>
+              <CardTitle>Importer les Données Clients</CardTitle>
               <CardDescription>
-                Upload an Excel file containing client data and last visit dates
+                Téléchargez un fichier Excel contenant les données clients et les dates de dernière visite
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <Label htmlFor="excel-file">Select Excel File</Label>
+                <Label htmlFor="excel-file">Sélectionner le Fichier Excel</Label>
                 <Input
                   id="excel-file"
                   type="file"
@@ -274,20 +274,20 @@ const ClientVisits = () => {
                 />
                 {selectedFile && (
                   <div className="mt-2 text-sm text-muted-foreground">
-                    Selected file: {selectedFile.name}
+                    Fichier sélectionné : {selectedFile.name}
                   </div>
                 )}
               </div>
 
               <div className="bg-muted/50 p-4 rounded-lg">
-                <h4 className="font-semibold mb-2">Required File Format:</h4>
+                <h4 className="font-semibold mb-2">Format de Fichier Requis :</h4>
                 <ul className="text-sm space-y-1 text-muted-foreground">
-                  <li>• Client Name</li>
-                  <li>• Phone Number</li>
+                  <li>• Nom du Client</li>
+                  <li>• Numéro de Téléphone</li>
                   <li>• Email</li>
-                  <li>• Car Brand</li>
-                  <li>• Car Model</li>
-                  <li>• Last Visit Date</li>
+                  <li>• Marque de Voiture</li>
+                  <li>• Modèle de Voiture</li>
+                  <li>• Date de Dernière Visite</li>
                 </ul>
               </div>
 
@@ -297,7 +297,7 @@ const ClientVisits = () => {
                 className="w-full bg-gradient-primary"
               >
                 <Upload className="w-4 h-4 mr-2" />
-                Upload and Process File
+                Télécharger et Traiter le Fichier
               </Button>
             </CardContent>
           </Card>
@@ -308,7 +308,7 @@ const ClientVisits = () => {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
             <Card className="bg-green-50 border-green-200">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-green-700">Less than 1 month</CardTitle>
+                <CardTitle className="text-sm text-green-700">Moins d'1 mois</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-green-800">{categoryStats.less_than_month}</div>
@@ -317,7 +317,7 @@ const ClientVisits = () => {
             
             <Card className="bg-blue-50 border-blue-200">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-blue-700">1-3 months</CardTitle>
+                <CardTitle className="text-sm text-blue-700">1-3 mois</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-blue-800">{categoryStats.one_to_three_months}</div>
@@ -326,7 +326,7 @@ const ClientVisits = () => {
             
             <Card className="bg-yellow-50 border-yellow-200">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-yellow-700">3-6 months</CardTitle>
+                <CardTitle className="text-sm text-yellow-700">3-6 mois</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-yellow-800">{categoryStats.three_to_six_months}</div>
@@ -335,7 +335,7 @@ const ClientVisits = () => {
             
             <Card className="bg-orange-50 border-orange-200">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-orange-700">6 months - 1 year</CardTitle>
+                <CardTitle className="text-sm text-orange-700">6 mois - 1 an</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-orange-800">{categoryStats.six_months_to_year}</div>
@@ -344,7 +344,7 @@ const ClientVisits = () => {
             
             <Card className="bg-red-50 border-red-200">
               <CardHeader className="pb-2">
-                <CardTitle className="text-sm text-red-700">More than 1 year</CardTitle>
+                <CardTitle className="text-sm text-red-700">Plus d'1 an</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-red-800">{categoryStats.more_than_year}</div>
@@ -357,28 +357,28 @@ const ClientVisits = () => {
             <CardContent className="pt-6">
               <div className="flex gap-4 items-end">
                 <div className="flex-1">
-                  <Label htmlFor="search">Search</Label>
+                  <Label htmlFor="search">Rechercher</Label>
                   <Input
                     id="search"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Search by name or phone number..."
+                    placeholder="Rechercher par nom ou numéro de téléphone..."
                   />
                 </div>
                 <div>
-                  <Label htmlFor="category">Filter by Category</Label>
+                  <Label htmlFor="category">Filtrer par Catégorie</Label>
                   <select
                     id="category"
                     value={filterCategory}
                     onChange={(e) => setFilterCategory(e.target.value)}
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
                   >
-                    <option value="all">All Categories</option>
-                    <option value="less_than_month">Less than 1 month</option>
-                    <option value="one_to_three_months">1-3 months</option>
-                    <option value="three_to_six_months">3-6 months</option>
-                    <option value="six_months_to_year">6 months - 1 year</option>
-                    <option value="more_than_year">More than 1 year</option>
+                    <option value="all">Toutes les Catégories</option>
+                    <option value="less_than_month">Moins d'1 mois</option>
+                    <option value="one_to_three_months">1-3 mois</option>
+                    <option value="three_to_six_months">3-6 mois</option>
+                    <option value="six_months_to_year">6 mois - 1 an</option>
+                    <option value="more_than_year">Plus d'1 an</option>
                   </select>
                 </div>
               </div>
@@ -388,17 +388,17 @@ const ClientVisits = () => {
           {/* Visits Table */}
           <Card>
             <CardHeader>
-              <CardTitle>All Client Visits</CardTitle>
-              <CardDescription>Manage and track client visits</CardDescription>
+              <CardTitle>Toutes les Visites Clients</CardTitle>
+              <CardDescription>Gérer et suivre les visites clients</CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
                     <TableHead>Client</TableHead>
-                    <TableHead>Car</TableHead>
-                    <TableHead>Last Visit</TableHead>
-                    <TableHead>Category</TableHead>
+                    <TableHead>Voiture</TableHead>
+                    <TableHead>Dernière Visite</TableHead>
+                    <TableHead>Catégorie</TableHead>
                     <TableHead>Notes</TableHead>
                     <TableHead>Actions</TableHead>
                   </TableRow>
@@ -428,7 +428,7 @@ const ClientVisits = () => {
                         <Textarea
                           value={visit.notes || ''}
                           onChange={(e) => updateNotes(visit.id, e.target.value)}
-                          placeholder="Add note..."
+                          placeholder="Ajouter une note..."
                           className="min-h-8 text-sm"
                           onBlur={(e) => {
                             if (e.target.value !== (visit.notes || '')) {

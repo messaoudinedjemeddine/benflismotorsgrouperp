@@ -69,8 +69,8 @@ const Accessories = () => {
     } catch (error) {
       console.error("Error fetching accessories:", error);
       toast({
-        title: "Error",
-        description: `Failed to fetch accessories: ${error.message}`,
+        title: "Erreur",
+        description: `Échec de la récupération des accessoires : ${error.message}`,
         variant: "destructive",
       });
     } finally {
@@ -83,8 +83,8 @@ const Accessories = () => {
 
     if (!formData.name || !formData.reference || !formData.price_ht) {
       toast({
-        title: "Error",
-        description: "Please fill in all fields",
+        title: "Erreur",
+        description: "Veuillez remplir tous les champs",
         variant: "destructive",
       });
       return;
@@ -104,7 +104,7 @@ const Accessories = () => {
           .eq("id", editingAccessory.id);
 
         if (error) throw error;
-        toast({ title: "Success", description: "Accessory updated successfully" });
+        toast({ title: "Succès", description: "Accessoire mis à jour avec succès" });
       } else {
         const { error } = await supabase
           .from("accessories")
@@ -115,7 +115,7 @@ const Accessories = () => {
           });
 
         if (error) throw error;
-        toast({ title: "Success", description: "Accessory added successfully" });
+        toast({ title: "Succès", description: "Accessoire ajouté avec succès" });
       }
 
       setDialogOpen(false);
@@ -124,8 +124,8 @@ const Accessories = () => {
     } catch (error) {
       console.error("Error saving accessory:", error);
       toast({
-        title: "Error",
-        description: "Failed to save accessory",
+        title: "Erreur",
+        description: "Échec de la sauvegarde de l'accessoire",
         variant: "destructive",
       });
     }
@@ -142,7 +142,7 @@ const Accessories = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this accessory?")) return;
+    if (!confirm("Êtes-vous sûr de vouloir supprimer cet accessoire ?")) return;
 
     try {
       const { error } = await supabase
@@ -151,13 +151,13 @@ const Accessories = () => {
         .eq("id", id);
 
       if (error) throw error;
-      toast({ title: "Success", description: "Accessory deleted successfully" });
+      toast({ title: "Succès", description: "Accessoire supprimé avec succès" });
       fetchAccessories();
     } catch (error) {
       console.error("Error deleting accessory:", error);
       toast({
-        title: "Error",
-        description: "Failed to delete accessory",
+        title: "Erreur",
+        description: "Échec de la suppression de l'accessoire",
         variant: "destructive",
       });
     }
@@ -183,8 +183,8 @@ const Accessories = () => {
     <div className="container mx-auto py-6 space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Accessories</h1>
-          <p className="text-muted-foreground">Manage vehicle accessories and pricing</p>
+          <h1 className="text-3xl font-bold">Accessoires</h1>
+          <p className="text-muted-foreground">Gérer les accessoires de véhicules et les prix</p>
         </div>
         <Dialog open={dialogOpen} onOpenChange={(open) => {
           setDialogOpen(open);
@@ -193,36 +193,36 @@ const Accessories = () => {
           <DialogTrigger asChild>
             <Button>
               <Plus className="mr-2 h-4 w-4" />
-              Add Accessory
+              Ajouter un Accessoire
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>
-                {editingAccessory ? "Edit Accessory" : "Add New Accessory"}
+                {editingAccessory ? "Modifier l'Accessoire" : "Ajouter un Nouvel Accessoire"}
               </DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Name</Label>
+                <Label htmlFor="name">Nom</Label>
                 <Input
                   id="name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Accessory name"
+                  placeholder="Nom de l'accessoire"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="reference">Reference</Label>
+                <Label htmlFor="reference">Référence</Label>
                 <Input
                   id="reference"
                   value={formData.reference}
                   onChange={(e) => setFormData({ ...formData, reference: e.target.value })}
-                  placeholder="Reference code"
+                  placeholder="Code de référence"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="price_ht">Price HT (Excluding Tax)</Label>
+                <Label htmlFor="price_ht">Prix HT (Hors Taxe)</Label>
                 <Input
                   id="price_ht"
                   type="number"
@@ -235,7 +235,7 @@ const Accessories = () => {
               {formData.price_ht && (
                 <div className="p-3 bg-muted rounded-md">
                   <p className="text-sm font-medium">
-                    Price TTC (Including 19% Tax):{" "}
+                    Prix TTC (Incluant 19% de Taxe) :{" "}
                     <span className="text-primary">
                       {formatCurrency(parseFloat(formData.price_ht) * 1.19)}
                     </span>
@@ -244,10 +244,10 @@ const Accessories = () => {
               )}
               <div className="flex gap-2 justify-end">
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
-                  Cancel
+                  Annuler
                 </Button>
                 <Button type="submit">
-                  {editingAccessory ? "Update" : "Add"} Accessory
+                  {editingAccessory ? "Mettre à jour" : "Ajouter"} l'Accessoire
                 </Button>
               </div>
             </form>
@@ -259,10 +259,10 @@ const Accessories = () => {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Reference</TableHead>
-              <TableHead>Price HT</TableHead>
-              <TableHead>Price TTC (19%)</TableHead>
+              <TableHead>Nom</TableHead>
+              <TableHead>Référence</TableHead>
+              <TableHead>Prix HT</TableHead>
+              <TableHead>Prix TTC (19%)</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -270,7 +270,7 @@ const Accessories = () => {
             {accessories.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={5} className="text-center text-muted-foreground">
-                  No accessories found. Add your first accessory to get started.
+                  Aucun accessoire trouvé. Ajoutez votre premier accessoire pour commencer.
                 </TableCell>
               </TableRow>
             ) : (

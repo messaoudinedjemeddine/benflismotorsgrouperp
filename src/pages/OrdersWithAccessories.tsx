@@ -143,8 +143,8 @@ const OrdersWithAccessories = () => {
     } catch (error: any) {
       console.error("Error fetching orders with accessories:", error);
       toast({
-        title: "Error",
-        description: "Failed to fetch orders with accessories",
+        title: "Erreur",
+        description: "Échec de la récupération des commandes avec accessoires",
         variant: "destructive",
       });
     } finally {
@@ -195,7 +195,7 @@ const OrdersWithAccessories = () => {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="text-lg">
-          Loading orders...
+          Chargement des commandes...
           <div className="text-sm text-gray-500 mt-2">
             Debug: User={user ? 'Yes' : 'No'}, Role={userRole || 'None'}, HasMagasin={hasRole(['magasin']) ? 'Yes' : 'No'}
           </div>
@@ -209,8 +209,8 @@ const OrdersWithAccessories = () => {
     return (
       <div className="container mx-auto py-6">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h1>
-          <p className="text-gray-600 mb-4">You don't have permission to access this page.</p>
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Accès refusé</h1>
+          <p className="text-gray-600 mb-4">Vous n'avez pas la permission d'accéder à cette page.</p>
           <div className="text-sm text-gray-500">
             Debug Info: User={user ? 'Yes' : 'No'}, Role={userRole || 'None'}, HasAccess={hasRole(['sys_admin', 'director', 'cdv', 'commercial', 'magasin']) ? 'Yes' : 'No'}
           </div>
@@ -222,22 +222,22 @@ const OrdersWithAccessories = () => {
   return (
     <div className="container mx-auto py-6 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Orders with Accessories</h1>
-        <p className="text-muted-foreground">View all vehicle orders that have accessories</p>
+        <h1 className="text-3xl font-bold">Commandes avec accessoires</h1>
+        <p className="text-muted-foreground">Voir toutes les commandes de véhicules qui ont des accessoires</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Orders Summary</CardTitle>
+          <CardTitle>Résumé des commandes</CardTitle>
           <CardDescription>
-            {filteredOrders.length} order{filteredOrders.length !== 1 ? 's' : ''} with accessories
+            {filteredOrders.length} commande{filteredOrders.length !== 1 ? 's' : ''} avec accessoires
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-2">
             <Search className="h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search by customer, vehicle, order number, or VIN..."
+              placeholder="Rechercher par client, véhicule, numéro de commande ou VIN..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="max-w-md"
@@ -248,13 +248,13 @@ const OrdersWithAccessories = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Order Number</TableHead>
-                  <TableHead>Customer</TableHead>
-                  <TableHead>Vehicle</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Added By</TableHead>
-                  <TableHead className="text-right">Accessories Count</TableHead>
-                  <TableHead className="text-right">Total Price</TableHead>
+                  <TableHead>Numéro de commande</TableHead>
+                  <TableHead>Client</TableHead>
+                  <TableHead>Véhicule</TableHead>
+                  <TableHead>Statut</TableHead>
+                  <TableHead>Ajouté par</TableHead>
+                  <TableHead className="text-right">Nombre d'accessoires</TableHead>
+                  <TableHead className="text-right">Prix total</TableHead>
                   <TableHead className="text-center">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -262,7 +262,7 @@ const OrdersWithAccessories = () => {
                 {filteredOrders.length === 0 ? (
                   <TableRow>
                     <TableCell colSpan={7} className="text-center text-muted-foreground py-8">
-                  {searchQuery ? "No orders found matching your search" : "No orders with accessories found"}
+                  {searchQuery ? "Aucune commande trouvée correspondant à votre recherche" : "Aucune commande avec accessoires trouvée"}
                     </TableCell>
                   </TableRow>
                 ) : (
@@ -316,7 +316,7 @@ const OrdersWithAccessories = () => {
                           onClick={() => navigate(`/dashboard/orders-with-accessories/${order.id}`)}
                         >
                           <Eye className="h-4 w-4 mr-2" />
-                          View Details
+                          Voir les détails
                         </Button>
                       </TableCell>
                     </TableRow>

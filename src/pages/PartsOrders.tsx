@@ -368,42 +368,42 @@ const PartsOrders = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold gradient-text">Parts Orders</h1>
+        <h1 className="text-3xl font-bold gradient-text">Commandes de pièces</h1>
         <Dialog open={showNewOrderDialog} onOpenChange={setShowNewOrderDialog}>
           <DialogTrigger asChild>
             <Button className="bg-gradient-primary">
               <Plus className="w-4 h-4 mr-2" />
-              New Order
+              Nouvelle commande
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>Create New Order</DialogTitle>
+              <DialogTitle>Créer une nouvelle commande</DialogTitle>
               <DialogDescription>
-                Create a new parts order for a client and their vehicle.
+                Créer une nouvelle commande de pièces pour un client et son véhicule.
               </DialogDescription>
             </DialogHeader>
             
             <Tabs defaultValue="client" className="w-full">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="client">Client Information</TabsTrigger>
-                <TabsTrigger value="car">Car Information</TabsTrigger>
-                <TabsTrigger value="pieces">Parts</TabsTrigger>
+                <TabsTrigger value="client">Informations client</TabsTrigger>
+                <TabsTrigger value="car">Informations véhicule</TabsTrigger>
+                <TabsTrigger value="pieces">Pièces</TabsTrigger>
               </TabsList>
               
               <TabsContent value="client" className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="clientName">Client Name</Label>
+                    <Label htmlFor="clientName">Nom du client</Label>
                     <Input
                       id="clientName"
                       value={newOrder.clientName}
                       onChange={(e) => setNewOrder(prev => ({...prev, clientName: e.target.value}))}
-                      placeholder="Enter client name"
+                      placeholder="Saisissez le nom du client"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="clientPhone">Phone Number</Label>
+                    <Label htmlFor="clientPhone">Numéro de téléphone</Label>
                     <Input
                       id="clientPhone"
                       value={newOrder.clientPhone}
@@ -413,13 +413,13 @@ const PartsOrders = () => {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="clientEmail">Email (Optional)</Label>
+                  <Label htmlFor="clientEmail">Email (Optionnel)</Label>
                   <Input
                     id="clientEmail"
                     type="email"
                     value={newOrder.clientEmail}
                     onChange={(e) => setNewOrder(prev => ({...prev, clientEmail: e.target.value}))}
-                    placeholder="example@email.com"
+                    placeholder="exemple@email.com"
                   />
                 </div>
               </TabsContent>
@@ -427,7 +427,7 @@ const PartsOrders = () => {
               <TabsContent value="car" className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="carBrand">Brand</Label>
+                    <Label htmlFor="carBrand">Marque</Label>
                     <Input
                       id="carBrand"
                       value={newOrder.carBrand}
@@ -436,7 +436,7 @@ const PartsOrders = () => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="carModel">Model</Label>
+                    <Label htmlFor="carModel">Modèle</Label>
                     <Input
                       id="carModel"
                       value={newOrder.carModel}
@@ -446,12 +446,12 @@ const PartsOrders = () => {
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="carVin">VIN Number (Optional)</Label>
+                  <Label htmlFor="carVin">Numéro VIN (Optionnel)</Label>
                   <Input
                     id="carVin"
                     value={newOrder.carVin}
                     onChange={(e) => setNewOrder(prev => ({...prev, carVin: e.target.value}))}
-                    placeholder="Vehicle Identification Number"
+                    placeholder="Numéro d'identification du véhicule"
                   />
                 </div>
               </TabsContent>
@@ -463,15 +463,15 @@ const PartsOrders = () => {
                       <CardContent className="pt-4">
                         <div className="grid grid-cols-4 gap-4 items-end">
                           <div>
-                            <Label>Reference</Label>
+                            <Label>Référence</Label>
                             <Input
                               value={piece.reference}
                               onChange={(e) => updatePiece(index, 'reference', e.target.value)}
-                              placeholder="Part number"
+                              placeholder="Numéro de pièce"
                             />
                           </div>
                           <div>
-                            <Label>Price (DA)</Label>
+                            <Label>Prix (DA)</Label>
                             <Input
                               type="number"
                               value={piece.price}
@@ -480,7 +480,7 @@ const PartsOrders = () => {
                             />
                           </div>
                           <div>
-                            <Label>Quantity</Label>
+                            <Label>Quantité</Label>
                             <Input
                               type="number"
                               min="1"
@@ -507,7 +507,7 @@ const PartsOrders = () => {
                   <div className="flex justify-between items-center">
                     <Button onClick={addPiece} variant="outline">
                       <Plus className="w-4 h-4 mr-2" />
-                      Add Part
+                      Ajouter une pièce
                     </Button>
                     <div className="text-lg font-semibold">
                       Total: {calculateTotal().toLocaleString()} DA
@@ -515,7 +515,7 @@ const PartsOrders = () => {
                   </div>
                   
                   <Button onClick={createOrder} className="w-full bg-gradient-primary">
-                    Create Order
+                    Créer la commande
                   </Button>
                 </div>
               </TabsContent>
@@ -528,7 +528,7 @@ const PartsOrders = () => {
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-green-600">Ready Orders</CardTitle>
+            <CardTitle className="text-sm text-green-600">Commandes prêtes</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.ready}</div>
@@ -538,7 +538,7 @@ const PartsOrders = () => {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-orange-600">Not Ready</CardTitle>
+            <CardTitle className="text-sm text-orange-600">Pas prêtes</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.not_ready}</div>
@@ -548,7 +548,7 @@ const PartsOrders = () => {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm text-red-600">Canceled</CardTitle>
+            <CardTitle className="text-sm text-red-600">Annulées</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.canceled}</div>
@@ -557,7 +557,7 @@ const PartsOrders = () => {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">Total Orders</CardTitle>
+            <CardTitle className="text-sm">Total des commandes</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{orders.length}</div>
@@ -566,7 +566,7 @@ const PartsOrders = () => {
         
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm">Total Value</CardTitle>
+            <CardTitle className="text-sm">Valeur totale</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -579,19 +579,19 @@ const PartsOrders = () => {
       {/* Orders Table */}
       <Card>
         <CardHeader>
-          <CardTitle>All Parts Orders</CardTitle>
-          <CardDescription>Manage and track parts orders</CardDescription>
+          <CardTitle>Toutes les commandes de pièces</CardTitle>
+          <CardDescription>Gérer et suivre les commandes de pièces</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Order ID</TableHead>
+                <TableHead>ID Commande</TableHead>
                 <TableHead>Client</TableHead>
-                <TableHead>Car</TableHead>
-                <TableHead>Parts</TableHead>
+                <TableHead>Véhicule</TableHead>
+                <TableHead>Pièces</TableHead>
                 <TableHead>Total</TableHead>
-                <TableHead>Status</TableHead>
+                <TableHead>Statut</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
@@ -604,12 +604,12 @@ const PartsOrders = () => {
                   </TableCell>
                   <TableCell>
                     <div>
-                      <div className="font-medium">{order.clients?.name || 'Unknown Client'}</div>
+                      <div className="font-medium">{order.clients?.name || 'Client inconnu'}</div>
                       <div className="text-sm text-muted-foreground">{order.clients?.phone_number || 'N/A'}</div>
                     </div>
                   </TableCell>
                   <TableCell>
-                    {order.cars?.brand || 'Unknown'} {order.cars?.model || ''}
+                    {order.cars?.brand || 'Inconnu'} {order.cars?.model || ''}
                   </TableCell>
                   <TableCell>
                     <div className="text-sm">
@@ -617,7 +617,7 @@ const PartsOrders = () => {
                         <div key={idx}>{piece.reference} (x{piece.quantity})</div>
                       ))}
                       {order.order_pieces.length > 2 && (
-                        <div className="text-muted-foreground">+{order.order_pieces.length - 2} more</div>
+                        <div className="text-muted-foreground">+{order.order_pieces.length - 2} de plus</div>
                       )}
                     </div>
                   </TableCell>
@@ -649,9 +649,9 @@ const PartsOrders = () => {
                           <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="ready">Ready</SelectItem>
-                          <SelectItem value="not_ready">Not Ready</SelectItem>
-                          <SelectItem value="canceled">Canceled</SelectItem>
+                          <SelectItem value="ready">Prêt</SelectItem>
+                          <SelectItem value="not_ready">Pas prêt</SelectItem>
+                          <SelectItem value="canceled">Annulé</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

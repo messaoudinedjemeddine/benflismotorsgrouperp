@@ -41,15 +41,15 @@ const Settings = () => {
 
   const handleSave = () => {
     toast({
-      title: "Settings saved",
-      description: "Your preferences have been updated successfully.",
+      title: "Paramètres sauvegardés",
+      description: "Vos préférences ont été mises à jour avec succès.",
     });
   };
 
   const handleReset = () => {
     toast({
-      title: "Settings reset",
-      description: "All settings have been reset to default values.",
+      title: "Paramètres réinitialisés",
+      description: "Tous les paramètres ont été réinitialisés aux valeurs par défaut.",
       variant: "destructive",
     });
   };
@@ -58,9 +58,9 @@ const Settings = () => {
     <div className="space-y-6 animate-fade-in">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Settings</h1>
+        <h1 className="text-3xl font-bold text-foreground">Paramètres</h1>
         <p className="text-muted-foreground mt-2">
-          Manage your account settings and application preferences.
+          Gérez les paramètres de votre compte et les préférences de l'application.
         </p>
       </div>
 
@@ -74,14 +74,14 @@ const Settings = () => {
                 <Bell className="h-5 w-5 text-primary" />
                 <CardTitle>Notifications</CardTitle>
               </div>
-              <CardDescription>Configure how you receive notifications</CardDescription>
+              <CardDescription>Configurez comment vous recevez les notifications</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Email Notifications</Label>
+                  <Label className="text-base">Notifications Email</Label>
                   <div className="text-sm text-muted-foreground">
-                    Receive notifications via email
+                    Recevoir les notifications par email
                   </div>
                 </div>
                 <Switch
@@ -96,9 +96,9 @@ const Settings = () => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Push Notifications</Label>
+                  <Label className="text-base">Notifications Push</Label>
                   <div className="text-sm text-muted-foreground">
-                    Receive push notifications on your device
+                    Recevoir les notifications push sur votre appareil
                   </div>
                 </div>
                 <Switch
@@ -113,9 +113,9 @@ const Settings = () => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Desktop Notifications</Label>
+                  <Label className="text-base">Notifications Bureau</Label>
                   <div className="text-sm text-muted-foreground">
-                    Show notifications in your browser
+                    Afficher les notifications dans votre navigateur
                   </div>
                 </div>
                 <Switch
@@ -130,9 +130,9 @@ const Settings = () => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Marketing Emails</Label>
+                  <Label className="text-base">Emails Marketing</Label>
                   <div className="text-sm text-muted-foreground">
-                    Receive updates about new features and offers
+                    Recevoir des mises à jour sur les nouvelles fonctionnalités et offres
                   </div>
                 </div>
                 <Switch
@@ -153,16 +153,16 @@ const Settings = () => {
             <CardHeader>
               <div className="flex items-center space-x-2">
                 <Shield className="h-5 w-5 text-primary" />
-                <CardTitle>Privacy & Security</CardTitle>
+                <CardTitle>Confidentialité et Sécurité</CardTitle>
               </div>
-              <CardDescription>Control your privacy and security settings</CardDescription>
+              <CardDescription>Contrôlez vos paramètres de confidentialité et de sécurité</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Public Profile</Label>
+                  <Label className="text-base">Profil Public</Label>
                   <div className="text-sm text-muted-foreground">
-                    Make your profile visible to other users
+                    Rendre votre profil visible aux autres utilisateurs
                   </div>
                 </div>
                 <Switch
@@ -177,9 +177,9 @@ const Settings = () => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Activity Status</Label>
+                  <Label className="text-base">Statut d'Activité</Label>
                   <div className="text-sm text-muted-foreground">
-                    Show when you're online or active
+                    Afficher quand vous êtes en ligne ou actif
                   </div>
                 </div>
                 <Switch
@@ -194,9 +194,9 @@ const Settings = () => {
               </div>
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label className="text-base">Analytics</Label>
+                  <Label className="text-base">Analytiques</Label>
                   <div className="text-sm text-muted-foreground">
-                    Help improve our service by sharing usage data
+                    Aider à améliorer notre service en partageant les données d'utilisation
                   </div>
                 </div>
                 <Switch
@@ -217,14 +217,14 @@ const Settings = () => {
             <CardHeader>
               <div className="flex items-center space-x-2">
                 <Palette className="h-5 w-5 text-primary" />
-                <CardTitle>Preferences</CardTitle>
+                <CardTitle>Préférences</CardTitle>
               </div>
-              <CardDescription>Customize your app experience</CardDescription>
+              <CardDescription>Personnalisez votre expérience d'application</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="language">Language</Label>
+                  <Label htmlFor="language">Langue</Label>
                   <Select
                     value={settings.preferences.language}
                     onValueChange={(value) =>
@@ -238,15 +238,15 @@ const Settings = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="en">English</SelectItem>
-                      <SelectItem value="es">Spanish</SelectItem>
-                      <SelectItem value="fr">French</SelectItem>
-                      <SelectItem value="de">German</SelectItem>
+                      <SelectItem value="en">Anglais</SelectItem>
+                      <SelectItem value="es">Espagnol</SelectItem>
+                      <SelectItem value="fr">Français</SelectItem>
+                      <SelectItem value="de">Allemand</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="timezone">Timezone</Label>
+                  <Label htmlFor="timezone">Fuseau Horaire</Label>
                   <Select
                     value={settings.preferences.timezone}
                     onValueChange={(value) =>
@@ -260,16 +260,16 @@ const Settings = () => {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="UTC-8">Pacific Time (UTC-8)</SelectItem>
-                      <SelectItem value="UTC-5">Eastern Time (UTC-5)</SelectItem>
+                      <SelectItem value="UTC-8">Heure du Pacifique (UTC-8)</SelectItem>
+                      <SelectItem value="UTC-5">Heure de l'Est (UTC-5)</SelectItem>
                       <SelectItem value="UTC+0">UTC</SelectItem>
-                      <SelectItem value="UTC+1">Central European Time (UTC+1)</SelectItem>
+                      <SelectItem value="UTC+1">Heure d'Europe Centrale (UTC+1)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="dateFormat">Date Format</Label>
+                <Label htmlFor="dateFormat">Format de Date</Label>
                 <Select
                   value={settings.preferences.dateFormat}
                   onValueChange={(value) =>
@@ -298,15 +298,15 @@ const Settings = () => {
           {/* Quick Actions */}
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
-              <CardDescription>Common settings tasks</CardDescription>
+              <CardTitle>Actions Rapides</CardTitle>
+              <CardDescription>Tâches de paramètres courantes</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Button onClick={handleSave} className="w-full bg-gradient-primary">
-                Save All Settings
+                Sauvegarder Tous les Paramètres
               </Button>
               <Button onClick={handleReset} variant="outline" className="w-full">
-                Reset to Defaults
+                Réinitialiser aux Valeurs par Défaut
               </Button>
             </CardContent>
           </Card>
@@ -314,26 +314,26 @@ const Settings = () => {
           {/* Security */}
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Security</CardTitle>
-              <CardDescription>Manage your account security</CardDescription>
+            <CardTitle>Sécurité</CardTitle>
+            <CardDescription>Gérez la sécurité de votre compte</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <Button variant="outline" className="w-full justify-start">
                 <Key className="h-4 w-4 mr-2" />
-                Change Password
+                Changer le Mot de Passe
               </Button>
               <Button variant="outline" className="w-full justify-start">
                 <Shield className="h-4 w-4 mr-2" />
-                Two-Factor Auth
+                Authentification à Deux Facteurs
               </Button>
               <Button variant="outline" className="w-full justify-start">
                 <Database className="h-4 w-4 mr-2" />
-                Export Data
+                Exporter les Données
               </Button>
               <Separator />
               <Button variant="destructive" className="w-full justify-start">
                 <Trash2 className="h-4 w-4 mr-2" />
-                Delete Account
+                Supprimer le Compte
               </Button>
             </CardContent>
           </Card>
@@ -341,7 +341,7 @@ const Settings = () => {
           {/* System Info */}
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>System Info</CardTitle>
+              <CardTitle>Informations Système</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm">
               <div className="flex justify-between">
@@ -349,12 +349,12 @@ const Settings = () => {
                 <span>2.1.0</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Last Updated</span>
-                <span>Dec 15, 2024</span>
+                <span className="text-muted-foreground">Dernière Mise à Jour</span>
+                <span>15 Déc 2024</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Status</span>
-                <span className="text-accent">Active</span>
+                <span className="text-muted-foreground">Statut</span>
+                <span className="text-accent">Actif</span>
               </div>
             </CardContent>
           </Card>

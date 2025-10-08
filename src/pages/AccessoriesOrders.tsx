@@ -91,7 +91,7 @@ const AccessoriesOrders = () => {
     } catch (error) {
       console.error("Error fetching orders:", error);
       toast({
-        title: "Error",
+        title: "Erreur",
         description: `Failed to fetch orders: ${error.message}`,
         variant: "destructive",
       });
@@ -154,7 +154,7 @@ const AccessoriesOrders = () => {
   const handleAddAccessory = async () => {
     if (!selectedOrder || !selectedAccessoryId || !quantity) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: "Please select an accessory and enter quantity",
         variant: "destructive",
       });
@@ -175,7 +175,7 @@ const AccessoriesOrders = () => {
 
       if (error) throw error;
 
-      toast({ title: "Success", description: "Accessory added to order" });
+      toast({ title: "Succès", description: "Accessoire ajouté à la commande" });
       setDialogOpen(false);
       setSelectedAccessoryId("");
       setQuantity("1");
@@ -183,17 +183,17 @@ const AccessoriesOrders = () => {
     } catch (error: any) {
       console.error("Error adding accessory:", error);
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message?.includes("duplicate") 
-          ? "This accessory is already added to this order" 
-          : "Failed to add accessory",
+          ? "Cet accessoire est déjà ajouté à cette commande" 
+          : "Échec de l'ajout de l'accessoire",
         variant: "destructive",
       });
     }
   };
 
   const handleDeleteAccessory = async (id: string) => {
-    if (!confirm("Remove this accessory from the order?")) return;
+    if (!confirm("Supprimer cet accessoire de la commande ?")) return;
 
     try {
       const { error } = await supabase
@@ -203,13 +203,13 @@ const AccessoriesOrders = () => {
 
       if (error) throw error;
 
-      toast({ title: "Success", description: "Accessory removed from order" });
+      toast({ title: "Succès", description: "Accessoire supprimé de la commande" });
       if (selectedOrder) fetchOrderAccessories(selectedOrder.id);
     } catch (error) {
       console.error("Error deleting accessory:", error);
       toast({
-        title: "Error",
-        description: "Failed to remove accessory",
+        title: "Erreur",
+        description: "Échec de la suppression de l'accessoire",
         variant: "destructive",
       });
     }
@@ -240,14 +240,14 @@ const AccessoriesOrders = () => {
   });
 
   if (loading) {
-    return <div className="flex justify-center items-center h-64">Loading...</div>;
+    return <div className="flex justify-center items-center h-64">Chargement...</div>;
   }
 
   return (
     <div className="container mx-auto py-6 space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Accessories Orders</h1>
-        <p className="text-muted-foreground">Add accessories to VN orders</p>
+        <h1 className="text-3xl font-bold">Commandes d'accessoires</h1>
+        <p className="text-muted-foreground">Ajouter des accessoires aux commandes VN</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -255,7 +255,7 @@ const AccessoriesOrders = () => {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <Input
-              placeholder="Search orders..."
+              placeholder="Rechercher des commandes..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -265,8 +265,8 @@ const AccessoriesOrders = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Order</TableHead>
-                  <TableHead>Customer & Vehicle</TableHead>
+                  <TableHead>Commande</TableHead>
+                  <TableHead>Client et véhicule</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -301,12 +301,12 @@ const AccessoriesOrders = () => {
             <>
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-xl font-semibold">Order {selectedOrder.order_number}</h3>
+                  <h3 className="text-xl font-semibold">Commande {selectedOrder.order_number}</h3>
                   <p className="text-sm text-muted-foreground">{selectedOrder.customer_name}</p>
                 </div>
                 <Button onClick={() => setDialogOpen(true)}>
                   <Plus className="mr-2 h-4 w-4" />
-                  Add Accessory
+                  Ajouter un accessoire
                 </Button>
               </div>
 
@@ -314,9 +314,9 @@ const AccessoriesOrders = () => {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead>Accessory</TableHead>
-                      <TableHead>Qty</TableHead>
-                      <TableHead>Price TTC</TableHead>
+                      <TableHead>Accessoire</TableHead>
+                      <TableHead>Qté</TableHead>
+                      <TableHead>Prix TTC</TableHead>
                       <TableHead>Total</TableHead>
                       <TableHead></TableHead>
                     </TableRow>
@@ -325,7 +325,7 @@ const AccessoriesOrders = () => {
                     {orderAccessories.length === 0 ? (
                       <TableRow>
                         <TableCell colSpan={5} className="text-center text-muted-foreground">
-                          No accessories added yet
+                          Aucun accessoire ajouté pour le moment
                         </TableCell>
                       </TableRow>
                     ) : (
@@ -360,7 +360,7 @@ const AccessoriesOrders = () => {
                         ))}
                         <TableRow>
                           <TableCell colSpan={3} className="text-right font-bold">
-                            Total:
+                            Total :
                           </TableCell>
                           <TableCell colSpan={2} className="font-bold text-primary text-lg">
                             {formatCurrency(calculateTotal())}
@@ -374,7 +374,7 @@ const AccessoriesOrders = () => {
             </>
           ) : (
             <div className="flex items-center justify-center h-[400px] border rounded-lg">
-              <p className="text-muted-foreground">Select an order to view and add accessories</p>
+              <p className="text-muted-foreground">Sélectionnez une commande pour voir et ajouter des accessoires</p>
             </div>
           )}
         </div>
@@ -384,14 +384,14 @@ const AccessoriesOrders = () => {
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Add Accessory to Order</DialogTitle>
+            <DialogTitle>Ajouter un accessoire à la commande</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div>
-              <label className="text-sm font-medium">Accessory</label>
+              <label className="text-sm font-medium">Accessoire</label>
               <Select value={selectedAccessoryId} onValueChange={setSelectedAccessoryId}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select accessory" />
+                  <SelectValue placeholder="Sélectionner un accessoire" />
                 </SelectTrigger>
                 <SelectContent>
                   {accessories.map((acc) => (
@@ -403,7 +403,7 @@ const AccessoriesOrders = () => {
               </Select>
             </div>
             <div>
-              <label className="text-sm font-medium">Quantity</label>
+              <label className="text-sm font-medium">Quantité</label>
               <Input
                 type="number"
                 min="1"
@@ -413,9 +413,9 @@ const AccessoriesOrders = () => {
             </div>
             <div className="flex gap-2 justify-end">
               <Button variant="outline" onClick={() => setDialogOpen(false)}>
-                Cancel
+                Annuler
               </Button>
-              <Button onClick={handleAddAccessory}>Add</Button>
+              <Button onClick={handleAddAccessory}>Ajouter</Button>
             </div>
           </div>
         </DialogContent>

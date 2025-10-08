@@ -359,27 +359,27 @@ const Users = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">User Management</h2>
-          <p className="text-muted-foreground">Manage system users and their roles</p>
+          <h2 className="text-3xl font-bold tracking-tight">Gestion des utilisateurs</h2>
+          <p className="text-muted-foreground">Gérer les utilisateurs du système et leurs rôles</p>
         </div>
         
         <div className="flex gap-2">
           <Button variant="outline" onClick={exportToExcel}>
             <Download className="mr-2 h-4 w-4" />
-            Export to Excel
+            Exporter vers Excel
           </Button>
           
           <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
           <DialogTrigger asChild>
             <Button>
               <UserPlus className="mr-2 h-4 w-4" />
-              Add User
+              Ajouter un utilisateur
             </Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Add New User</DialogTitle>
-              <DialogDescription>Create a new user account with role assignment</DialogDescription>
+              <DialogTitle>Ajouter un nouvel utilisateur</DialogTitle>
+              <DialogDescription>Créer un nouveau compte utilisateur avec attribution de rôle</DialogDescription>
             </DialogHeader>
             <form onSubmit={handleAddUser} className="space-y-4">
               <div>
@@ -393,7 +393,7 @@ const Users = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Mot de passe</Label>
                 <Input
                   id="password"
                   type="password"
@@ -404,7 +404,7 @@ const Users = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="full_name">Full Name</Label>
+                <Label htmlFor="full_name">Nom complet</Label>
                 <Input
                   id="full_name"
                   value={formData.full_name}
@@ -413,7 +413,7 @@ const Users = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="phone_number">Phone Number (Optional)</Label>
+                <Label htmlFor="phone_number">Numéro de téléphone (Optionnel)</Label>
                 <Input
                   id="phone_number"
                   value={formData.phone_number}
@@ -421,7 +421,7 @@ const Users = () => {
                 />
               </div>
               <div>
-                <Label htmlFor="role">Role</Label>
+                <Label htmlFor="role">Rôle</Label>
                 <Select value={formData.role} onValueChange={(value) => setFormData({ ...formData, role: value })}>
                   <SelectTrigger>
                     <SelectValue />
@@ -437,9 +437,9 @@ const Users = () => {
               </div>
               <div className="flex justify-end gap-2">
                 <Button type="button" variant="outline" onClick={() => setIsAddDialogOpen(false)}>
-                  Cancel
+                  Annuler
                 </Button>
-                <Button type="submit">Create User</Button>
+                <Button type="submit">Créer l'utilisateur</Button>
               </div>
             </form>
           </DialogContent>
@@ -449,17 +449,17 @@ const Users = () => {
 
       <Card>
         <CardHeader>
-          <CardTitle>All Users</CardTitle>
+          <CardTitle>Tous les utilisateurs</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Name</TableHead>
+                <TableHead>Nom</TableHead>
                 <TableHead>Email</TableHead>
-                <TableHead>Phone</TableHead>
-                <TableHead>Role</TableHead>
-                <TableHead>Created</TableHead>
+                <TableHead>Téléphone</TableHead>
+                <TableHead>Rôle</TableHead>
+                <TableHead>Créé</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -481,7 +481,7 @@ const Users = () => {
                         variant="ghost"
                         size="icon"
                         onClick={() => openEditDialog(user)}
-                        title="Edit user"
+                        title="Modifier l'utilisateur"
                       >
                         <Edit className="h-4 w-4" />
                       </Button>
@@ -489,7 +489,7 @@ const Users = () => {
                         variant="ghost"
                         size="icon"
                         onClick={() => openPasswordDialog(user)}
-                        title="Reset password"
+                        title="Réinitialiser le mot de passe"
                       >
                         <Key className="h-4 w-4" />
                       </Button>
@@ -498,7 +498,7 @@ const Users = () => {
                         size="icon"
                         onClick={() => openDeleteDialog(user)}
                         className="text-destructive"
-                        title="Delete user"
+                        title="Supprimer l'utilisateur"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -515,8 +515,8 @@ const Users = () => {
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Edit User</DialogTitle>
-            <DialogDescription>Update user information and role</DialogDescription>
+            <DialogTitle>Modifier l'utilisateur</DialogTitle>
+            <DialogDescription>Mettre à jour les informations et le rôle de l'utilisateur</DialogDescription>
           </DialogHeader>
           <form onSubmit={handleEditUser} className="space-y-4">
             <div>
@@ -529,7 +529,7 @@ const Users = () => {
               />
             </div>
             <div>
-              <Label htmlFor="edit_full_name">Full Name</Label>
+              <Label htmlFor="edit_full_name">Nom complet</Label>
               <Input
                 id="edit_full_name"
                 value={formData.full_name}
@@ -538,7 +538,7 @@ const Users = () => {
               />
             </div>
             <div>
-              <Label htmlFor="edit_phone_number">Phone Number</Label>
+              <Label htmlFor="edit_phone_number">Numéro de téléphone</Label>
               <Input
                 id="edit_phone_number"
                 value={formData.phone_number}
@@ -546,7 +546,7 @@ const Users = () => {
               />
             </div>
             <div>
-              <Label htmlFor="edit_role">Role</Label>
+              <Label htmlFor="edit_role">Rôle</Label>
               <Select value={formData.role} onValueChange={(value) => setFormData({ ...formData, role: value })}>
                 <SelectTrigger>
                   <SelectValue />
@@ -562,9 +562,9 @@ const Users = () => {
             </div>
             <div className="flex justify-end gap-2">
               <Button type="button" variant="outline" onClick={() => setIsEditDialogOpen(false)}>
-                Cancel
+                Annuler
               </Button>
-              <Button type="submit">Save Changes</Button>
+              <Button type="submit">Sauvegarder les modifications</Button>
             </div>
           </form>
         </DialogContent>
@@ -574,29 +574,29 @@ const Users = () => {
       <Dialog open={isPasswordDialogOpen} onOpenChange={setIsPasswordDialogOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Reset Password</DialogTitle>
+            <DialogTitle>Réinitialiser le mot de passe</DialogTitle>
             <DialogDescription>
-              Set a new password for {selectedUser?.full_name}
+              Définir un nouveau mot de passe pour {selectedUser?.full_name}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-4">
             <div>
-              <Label htmlFor="new_password">New Password</Label>
+              <Label htmlFor="new_password">Nouveau mot de passe</Label>
               <Input
                 id="new_password"
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="Enter new password (min 6 characters)"
+                placeholder="Saisissez le nouveau mot de passe (min 6 caractères)"
                 minLength={6}
               />
             </div>
             <div className="flex justify-end gap-2">
               <Button type="button" variant="outline" onClick={() => setIsPasswordDialogOpen(false)}>
-                Cancel
+                Annuler
               </Button>
               <Button onClick={handleResetPassword} disabled={!newPassword || newPassword.length < 6}>
-                Reset Password
+                Réinitialiser le mot de passe
               </Button>
             </div>
           </div>
@@ -607,15 +607,15 @@ const Users = () => {
       <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogTitle>Êtes-vous sûr ?</AlertDialogTitle>
             <AlertDialogDescription>
-              This will permanently delete the user account for {selectedUser?.full_name}. This action cannot be undone.
+              Ceci supprimera définitivement le compte utilisateur de {selectedUser?.full_name}. Cette action ne peut pas être annulée.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogCancel>Annuler</AlertDialogCancel>
             <AlertDialogAction onClick={handleDeleteUser} className="bg-destructive hover:bg-destructive/90">
-              Delete
+              Supprimer
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

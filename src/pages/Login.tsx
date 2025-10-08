@@ -51,7 +51,7 @@ const Login = () => {
               Benflis Motors Group ERP
             </CardTitle>
             <CardDescription>
-              Complete business operations platform
+              Plateforme complète d'opérations commerciales
             </CardDescription>
           </CardHeader>
           
@@ -69,7 +69,7 @@ const Login = () => {
                   <Input
                     id="signin-email"
                     type="email"
-                    placeholder="Enter your email"
+                    placeholder="Saisissez votre email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="pl-10 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
@@ -84,13 +84,13 @@ const Login = () => {
                 transition={{ delay: 0.4 }}
                 className="space-y-2"
               >
-                <Label htmlFor="signin-password">Password</Label>
+                <Label htmlFor="signin-password">Mot de passe</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                   <Input
                     id="signin-password"
                     type={showPassword ? "text" : "password"}
-                    placeholder="Enter your password"
+                    placeholder="Saisissez votre mot de passe"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     className="pl-10 pr-10 transition-all duration-200 focus:ring-2 focus:ring-primary/20"
@@ -116,7 +116,7 @@ const Login = () => {
                   disabled={loading}
                   className="w-full bg-gradient-primary hover:bg-gradient-primary/90 transition-all duration-200"
                 >
-                  {loading ? "Signing in..." : "Sign In"}
+                  {loading ? "Connexion en cours..." : "Se connecter"}
                 </Button>
               </motion.div>
             </form>

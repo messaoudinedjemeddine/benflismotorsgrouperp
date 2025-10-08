@@ -48,8 +48,8 @@ const Profile = () => {
 
   const handleSave = () => {
     toast({
-      title: "Profile updated",
-      description: "Your profile information has been saved successfully.",
+      title: "Profil mis à jour",
+      description: "Vos informations de profil ont été sauvegardées avec succès.",
     });
     setIsEditing(false);
   };
@@ -63,9 +63,9 @@ const Profile = () => {
     <div className="space-y-6 animate-fade-in">
       {/* Page header */}
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Profile</h1>
+        <h1 className="text-3xl font-bold text-foreground">Profil</h1>
         <p className="text-muted-foreground mt-2">
-          Manage your account settings and preferences.
+          Gérez les paramètres et préférences de votre compte.
         </p>
       </div>
 
@@ -75,14 +75,14 @@ const Profile = () => {
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
-                <CardTitle>Profile Information</CardTitle>
-                <CardDescription>Update your personal details and information</CardDescription>
+                <CardTitle>Informations du Profil</CardTitle>
+                <CardDescription>Mettez à jour vos détails personnels et informations</CardDescription>
               </div>
               <Button
                 onClick={() => setIsEditing(!isEditing)}
                 variant={isEditing ? "outline" : "default"}
               >
-                {isEditing ? "Cancel" : "Edit Profile"}
+                {isEditing ? "Annuler" : "Modifier le Profil"}
               </Button>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -103,7 +103,7 @@ const Profile = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="name">Nom Complet</Label>
                   <Input
                     id="name"
                     value={profile.name}
@@ -124,7 +124,7 @@ const Profile = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone</Label>
+                  <Label htmlFor="phone">Téléphone</Label>
                   <Input
                     id="phone"
                     value={profile.phone}
@@ -134,7 +134,7 @@ const Profile = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="location">Location</Label>
+                  <Label htmlFor="location">Localisation</Label>
                   <Input
                     id="location"
                     value={profile.location}
@@ -146,7 +146,7 @@ const Profile = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="bio">Bio</Label>
+                  <Label htmlFor="bio">Biographie</Label>
                 <Textarea
                   id="bio"
                   value={profile.bio}
@@ -159,10 +159,10 @@ const Profile = () => {
               {isEditing && (
                 <div className="flex space-x-2">
                   <Button onClick={handleSave} className="bg-gradient-primary">
-                    Save Changes
+                    Sauvegarder les Modifications
                   </Button>
                   <Button onClick={handleCancel} variant="outline">
-                    Cancel
+                    Annuler
                   </Button>
                 </div>
               )}
@@ -172,8 +172,8 @@ const Profile = () => {
           {/* Recent Activity */}
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Recent Activity</CardTitle>
-              <CardDescription>Your latest actions and updates</CardDescription>
+              <CardTitle>Activité Récente</CardTitle>
+              <CardDescription>Vos dernières actions et mises à jour</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -198,8 +198,8 @@ const Profile = () => {
           {/* Stats */}
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Overview</CardTitle>
-              <CardDescription>Your account statistics</CardDescription>
+            <CardTitle>Aperçu</CardTitle>
+            <CardDescription>Statistiques de votre compte</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
@@ -220,7 +220,7 @@ const Profile = () => {
           {/* Quick Info */}
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Quick Info</CardTitle>
+              <CardTitle>Informations Rapides</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-center space-x-3">
@@ -237,11 +237,11 @@ const Profile = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Calendar className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm">Joined {profile.joinDate}</span>
+                <span className="text-sm">Rejoint en {profile.joinDate}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Shield className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm">Role: {profile.role}</span>
+                <span className="text-sm">Rôle : {profile.role}</span>
               </div>
             </CardContent>
           </Card>

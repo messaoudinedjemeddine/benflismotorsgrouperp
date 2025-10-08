@@ -236,19 +236,19 @@ const VnOrders = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Orders</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Commandes</h2>
           <p className="text-muted-foreground">
-            Manage vehicle orders and track their status
+            Gérer les commandes de véhicules et suivre leur statut
           </p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" onClick={handleImportExcel}>
             <Upload className="mr-2 h-4 w-4" />
-            Import Excel
+            Importer Excel
           </Button>
           <Button onClick={() => navigate("/dashboard/vn/orders/new")}>
             <Plus className="mr-2 h-4 w-4" />
-            New Order
+            Nouvelle commande
           </Button>
         </div>
       </div>
@@ -266,7 +266,7 @@ const VnOrders = () => {
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Search by customer, order ID, phone, or VIN..."
+                placeholder="Rechercher par client, ID commande, téléphone ou VIN..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9"
@@ -274,10 +274,10 @@ const VnOrders = () => {
             </div>
             <Select value={statusFilter} onValueChange={setStatusFilter}>
               <SelectTrigger className="w-full md:w-[200px]">
-                <SelectValue placeholder="Filter by status" />
+                <SelectValue placeholder="Filtrer par statut" />
               </SelectTrigger>
               <SelectContent className="bg-background z-50">
-                <SelectItem value="all">All Statuses</SelectItem>
+                <SelectItem value="all">Tous les statuts</SelectItem>
                 <SelectItem value="INSCRIPTION">INSCRIPTION</SelectItem>
                 <SelectItem value="PROFORMA">PROFORMA</SelectItem>
                 <SelectItem value="COMMANDE">COMMANDE</SelectItem>
@@ -297,11 +297,11 @@ const VnOrders = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Order ID</TableHead>
-                  <TableHead>Customer</TableHead>
-                  <TableHead>Vehicle</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Location</TableHead>
+                  <TableHead>ID Commande</TableHead>
+                  <TableHead>Client</TableHead>
+                  <TableHead>Véhicule</TableHead>
+                  <TableHead>Statut</TableHead>
+                  <TableHead>Localisation</TableHead>
                   <TableHead>Date</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
@@ -310,7 +310,7 @@ const VnOrders = () => {
                 {filteredOrders.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={7} className="text-center py-8">
-                    No orders found
+                    Aucune commande trouvée
                   </TableCell>
                 </TableRow>
                 ) : (
@@ -328,7 +328,7 @@ const VnOrders = () => {
                           {order.customer_id_number && (
                             <div className="group relative inline-block">
                               <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full cursor-help">
-                                ID Available
+                                ID Disponible
                               </span>
                               <div className="invisible group-hover:visible absolute left-0 top-full mt-1 z-10 bg-popover text-popover-foreground px-3 py-2 rounded-md shadow-lg border text-sm whitespace-nowrap">
                                 ID: {order.customer_id_number}
@@ -343,7 +343,7 @@ const VnOrders = () => {
                             {order.vehicle_brand} {order.vehicle_model}
                           </div>
                           <div className="text-sm text-muted-foreground">
-                            {order.vehicle_color} • {order.vehicle_vin || "No VIN"}
+                            {order.vehicle_color} • {order.vehicle_vin || "Pas de VIN"}
                           </div>
                         </div>
                       </TableCell>
@@ -364,7 +364,7 @@ const VnOrders = () => {
                             variant="ghost"
                             size="icon"
                             onClick={() => navigate(`/dashboard/vn/orders/${order.id}`)}
-                            title="View Details"
+                            title="Voir les détails"
                           >
                             <Eye className="h-4 w-4" />
                           </Button>
@@ -380,7 +380,7 @@ const VnOrders = () => {
                             variant="ghost"
                             size="icon"
                             onClick={() => navigate(`/dashboard/vn/orders/${order.id}/edit`)}
-                            title="Edit Order"
+                            title="Modifier la commande"
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
@@ -390,7 +390,7 @@ const VnOrders = () => {
                               size="icon"
                               onClick={() => handleDelete(order.id)}
                               className="text-destructive hover:text-destructive"
-                              title="Delete"
+                              title="Supprimer"
                             >
                               <Trash2 className="h-4 w-4" />
                             </Button>

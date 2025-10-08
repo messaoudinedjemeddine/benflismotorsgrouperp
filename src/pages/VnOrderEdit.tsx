@@ -93,7 +93,7 @@ const VnOrderEdit = () => {
       });
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -115,14 +115,14 @@ const VnOrderEdit = () => {
       if (error) throw error;
 
       toast({
-        title: "Success",
-        description: "Order updated successfully",
+        title: "Succès",
+        description: "Commande mise à jour avec succès",
       });
 
       navigate(`/dashboard/vn/orders/${id}`);
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -138,7 +138,7 @@ const VnOrderEdit = () => {
   if (fetching) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-lg">Loading order...</div>
+        <div className="text-lg">Chargement de la commande...</div>
       </div>
     );
   }
@@ -150,20 +150,20 @@ const VnOrderEdit = () => {
           <ArrowLeft className="h-4 w-4" />
         </Button>
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">Edit Order</h2>
-          <p className="text-muted-foreground">Update order information</p>
+          <h2 className="text-3xl font-bold tracking-tight">Modifier la commande</h2>
+          <p className="text-muted-foreground">Mettre à jour les informations de la commande</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit}>
         <Card>
           <CardHeader>
-            <CardTitle>Customer Information</CardTitle>
+            <CardTitle>Informations client</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="customer_name">Full Name *</Label>
+                <Label htmlFor="customer_name">Nom complet *</Label>
                 <Input
                   id="customer_name"
                   required
@@ -172,7 +172,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="customer_phone">Phone Number *</Label>
+                <Label htmlFor="customer_phone">Numéro de téléphone *</Label>
                 <Input
                   id="customer_phone"
                   required
@@ -181,7 +181,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="customer_id_number">ID Number (18 digits) *</Label>
+                <Label htmlFor="customer_id_number">Numéro d'identité (18 chiffres) *</Label>
                 <Input
                   id="customer_id_number"
                   required
@@ -200,7 +200,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="customer_address">Address</Label>
+                <Label htmlFor="customer_address">Adresse</Label>
                 <Textarea
                   id="customer_address"
                   value={formData.customer_address}
@@ -213,12 +213,12 @@ const VnOrderEdit = () => {
 
         <Card className="mt-6">
           <CardHeader>
-            <CardTitle>Vehicle Information</CardTitle>
+            <CardTitle>Informations véhicule</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="vehicle_brand">Brand *</Label>
+                <Label htmlFor="vehicle_brand">Marque *</Label>
                 <Input
                   id="vehicle_brand"
                   required
@@ -227,7 +227,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="vehicle_model">Model *</Label>
+                <Label htmlFor="vehicle_model">Modèle *</Label>
                 <Input
                   id="vehicle_model"
                   required
@@ -236,7 +236,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="vehicle_year">Year</Label>
+                <Label htmlFor="vehicle_year">Année</Label>
                 <Input
                   id="vehicle_year"
                   type="number"
@@ -245,7 +245,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="vehicle_color">Color</Label>
+                <Label htmlFor="vehicle_color">Couleur</Label>
                 <Input
                   id="vehicle_color"
                   value={formData.vehicle_color}
@@ -261,7 +261,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="location">Location *</Label>
+                <Label htmlFor="location">Emplacement *</Label>
                 <Select
                   value={formData.location}
                   onValueChange={(value) => handleChange("location", value)}
@@ -277,7 +277,7 @@ const VnOrderEdit = () => {
                 </Select>
               </div>
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="vehicle_avaries">Damages/Avaries</Label>
+                <Label htmlFor="vehicle_avaries">Dommages/Avaries</Label>
                 <Textarea
                   id="vehicle_avaries"
                   value={formData.vehicle_avaries}
@@ -290,12 +290,12 @@ const VnOrderEdit = () => {
 
         <Card className="mt-6">
           <CardHeader>
-            <CardTitle>Order Status & Payment</CardTitle>
+            <CardTitle>Statut de la commande et paiement</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="status">Status *</Label>
+                <Label htmlFor="status">Statut *</Label>
                 <Select
                   value={formData.status}
                   onValueChange={(value) => handleChange("status", value)}
@@ -318,7 +318,7 @@ const VnOrderEdit = () => {
                 </Select>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="total_price">Total Price (DZD)</Label>
+                <Label htmlFor="total_price">Prix total (DZD)</Label>
                 <Input
                   id="total_price"
                   type="number"
@@ -327,7 +327,7 @@ const VnOrderEdit = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="advance_payment">Advance Payment (DZD)</Label>
+                <Label htmlFor="advance_payment">Acompte (DZD)</Label>
                 <Input
                   id="advance_payment"
                   type="number"
@@ -345,10 +345,10 @@ const VnOrderEdit = () => {
             variant="outline"
             onClick={() => navigate(`/dashboard/vn/orders/${id}`)}
           >
-            Cancel
+            Annuler
           </Button>
           <Button type="submit" disabled={loading}>
-            {loading ? "Saving..." : "Save Changes"}
+            {loading ? "Sauvegarde..." : "Sauvegarder les modifications"}
           </Button>
         </div>
       </form>

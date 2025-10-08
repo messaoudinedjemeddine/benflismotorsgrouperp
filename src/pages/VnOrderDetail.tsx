@@ -102,7 +102,7 @@ const VnOrderDetail = () => {
       }
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -191,8 +191,8 @@ const VnOrderDetail = () => {
       
       if (!fileExt || !allowedTypes.includes(fileExt)) {
         toast({
-          title: "Invalid File Type",
-          description: "Only PDF, PNG, JPG, and JPEG files are allowed",
+        title: "Type de fichier invalide",
+        description: "Seuls les fichiers PDF, PNG, JPG et JPEG sont autorisés",
           variant: "destructive",
         });
         return false;
@@ -324,8 +324,8 @@ const VnOrderDetail = () => {
       console.log("Document uploaded successfully:", publicUrl);
 
       toast({
-        title: "Success",
-        description: "Document uploaded successfully",
+        title: "Succès",
+        description: "Document téléchargé avec succès",
       });
 
       // Refresh documents list
@@ -334,7 +334,7 @@ const VnOrderDetail = () => {
     } catch (error: any) {
       console.error("Upload failed:", error);
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -422,7 +422,7 @@ const VnOrderDetail = () => {
     } catch (error: any) {
       console.error("Error saving stage data:", error);
       toast({
-        title: "Error",
+        title: "Erreur",
         description: `Failed to save ${stageName} data: ${error.message}`,
         variant: "destructive",
       });
@@ -463,8 +463,8 @@ const VnOrderDetail = () => {
   const completeStage = async (currentStageIndex: number) => {
     if (!canCompleteStage(orderStages[currentStageIndex].name)) {
       toast({
-        title: "Cannot complete stage",
-        description: "Please fill in all required information",
+        title: "Impossible de terminer l'étape",
+        description: "Veuillez remplir toutes les informations requises",
         variant: "destructive",
       });
       return;
@@ -510,14 +510,14 @@ const VnOrderDetail = () => {
       if (error) throw error;
 
       toast({
-        title: "Success",
-        description: `Stage ${orderStages[currentStageIndex].label} completed and data saved`,
+        title: "Succès",
+        description: `Étape ${orderStages[currentStageIndex].label} terminée et données sauvegardées`,
       });
 
       fetchOrder();
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -539,14 +539,14 @@ const VnOrderDetail = () => {
       if (error) throw error;
 
       toast({
-        title: "Success",
-        description: "Completion date updated",
+        title: "Succès",
+        description: "Date de fin mise à jour",
       });
 
       fetchOrder();
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -617,16 +617,16 @@ const VnOrderDetail = () => {
         <DialogTrigger asChild>
           <Button variant="outline" size="sm" className="h-8">
             <Eye className="h-4 w-4 mr-2" />
-            View Documents ({stageDocs.length})
+            Voir les documents ({stageDocs.length})
           </Button>
         </DialogTrigger>
         <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Documents for {stageName} Stage</DialogTitle>
+            <DialogTitle>Documents pour l'étape {stageName}</DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             {stageDocs.length === 0 ? (
-              <p className="text-muted-foreground text-center py-8">No documents uploaded yet</p>
+              <p className="text-muted-foreground text-center py-8">Aucun document téléchargé pour le moment</p>
             ) : (
               stageDocs.map((doc, index) => (
                 <Card key={index}>
@@ -656,7 +656,7 @@ const VnOrderDetail = () => {
                           }}
                         >
                           <Eye className="h-4 w-4 mr-2" />
-                          View
+                          Voir
                         </Button>
                         <Button
                           variant="outline"
@@ -678,7 +678,7 @@ const VnOrderDetail = () => {
                           }}
                         >
                           <Download className="h-4 w-4 mr-2" />
-                          Download
+                          Télécharger
                         </Button>
                       </div>
                     </div>
@@ -701,7 +701,7 @@ const VnOrderDetail = () => {
       return (
         <Card className="ml-16 mb-6 opacity-50">
           <CardContent className="pt-6">
-            <p className="text-muted-foreground text-center">You don't have access to this stage</p>
+            <p className="text-muted-foreground text-center">Vous n'avez pas accès à cette étape</p>
           </CardContent>
         </Card>
       );
@@ -719,7 +719,7 @@ const VnOrderDetail = () => {
           {stage.name === "INSCRIPTION" && (
             <div className="space-y-4">
               <div>
-                <Label>Call Result</Label>
+                <Label>Résultat de l'appel</Label>
                 <Select
                   value={stageData.INSCRIPTION?.callResult}
                   onValueChange={async (value) => {
@@ -728,7 +728,7 @@ const VnOrderDetail = () => {
                   }}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select call result" />
+                    <SelectValue placeholder="Sélectionner le résultat de l'appel" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="injoignable">Injoignable</SelectItem>
@@ -746,7 +746,7 @@ const VnOrderDetail = () => {
           {stage.name === "PROFORMA" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Proforma Invoice</Label>
+                <Label>Télécharger la facture proforma</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -770,7 +770,7 @@ const VnOrderDetail = () => {
           {stage.name === "COMMANDE" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Purchase Order</Label>
+                <Label>Télécharger le bon de commande</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -794,7 +794,7 @@ const VnOrderDetail = () => {
           {stage.name === "VALIDATION" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Validation Certificate</Label>
+                <Label>Télécharger le certificat de validation</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -818,7 +818,7 @@ const VnOrderDetail = () => {
           {stage.name === "ACCUSÉ" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Acknowledgement Receipt</Label>
+                <Label>Télécharger le reçu d'accusé de réception</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -842,7 +842,7 @@ const VnOrderDetail = () => {
           {stage.name === "FACTURATION" && (
             <div className="space-y-4">
               <div>
-                <Label>VIN Number</Label>
+                <Label>Numéro VIN</Label>
                 <Input
                   value={order?.vehicle_vin || ""}
                   onChange={async (e) => {
@@ -852,7 +852,7 @@ const VnOrderDetail = () => {
                       vehicle_vin: e.target.value 
                     });
                   }}
-                  placeholder="Enter VIN"
+                  placeholder="Saisir le VIN"
                 />
               </div>
               <div>
@@ -879,7 +879,7 @@ const VnOrderDetail = () => {
               </div>
               {stageData.FACTURATION?.tropPercu === "oui" && (
                 <div>
-                  <Label>Trop Perçu Amount (DZD)</Label>
+                  <Label>Montant Trop Perçu (DZD)</Label>
                   <Input
                     type="number"
                     value={stageData.FACTURATION?.tropPercuAmount || ""}
@@ -891,7 +891,7 @@ const VnOrderDetail = () => {
                         tropPercuAmount: value 
                       });
                     }}
-                    placeholder="Enter amount"
+                    placeholder="Saisir le montant"
                   />
                 </div>
               )}
@@ -902,7 +902,7 @@ const VnOrderDetail = () => {
           {stage.name === "ARRIVAGE" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Route Sheet</Label>
+                <Label>Télécharger la feuille de route</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -937,22 +937,22 @@ const VnOrderDetail = () => {
               </div>
               {stageData.ARRIVAGE?.avaries === "oui" && (
                 <div>
-                  <Label>Avaries Note</Label>
+                  <Label>Note sur les avaries</Label>
                   <Textarea
                     value={stageData.ARRIVAGE?.avariesNote || ""}
                     onChange={(e) => updateStageData("ARRIVAGE", "avariesNote", e.target.value)}
-                    placeholder="Describe the damage"
+                    placeholder="Décrire les dommages"
                   />
                 </div>
               )}
               <div>
-                <Label>Location</Label>
+                <Label>Emplacement</Label>
                 <Select
                   value={stageData.ARRIVAGE?.location}
                   onValueChange={(value) => updateStageData("ARRIVAGE", "location", value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select location" />
+                    <SelectValue placeholder="Sélectionner l'emplacement" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="PARC1">PARC1</SelectItem>
@@ -962,11 +962,11 @@ const VnOrderDetail = () => {
                 </Select>
               </div>
               <div>
-                <Label>Position (Optional)</Label>
+                <Label>Position (Optionnel)</Label>
                 <Input
                   value={stageData.ARRIVAGE?.position || ""}
                   onChange={(e) => updateStageData("ARRIVAGE", "position", e.target.value)}
-                  placeholder="e.g., A1, B13"
+                  placeholder="ex. A1, B13"
                 />
               </div>
             </div>
@@ -976,7 +976,7 @@ const VnOrderDetail = () => {
           {stage.name === "CARTE_JAUNE" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Invoice Scan</Label>
+                <Label>Télécharger le scan de facture</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -994,7 +994,7 @@ const VnOrderDetail = () => {
                 </div>
               </div>
               <div>
-                <Label>Upload Yellow Card</Label>
+                <Label>Télécharger la carte jaune</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -1018,7 +1018,7 @@ const VnOrderDetail = () => {
           {stage.name === "LIVRAISON" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Delivery Note</Label>
+                <Label>Télécharger le bon de livraison</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -1036,7 +1036,7 @@ const VnOrderDetail = () => {
                 </div>
               </div>
               <div>
-                <Label>Provisional Delivery Date</Label>
+                <Label>Date de livraison provisoire</Label>
                 <Input
                   type="date"
                   value={stageData.LIVRAISON?.deliveryDate || ""}
@@ -1050,7 +1050,7 @@ const VnOrderDetail = () => {
           {stage.name === "DOSSIER_DAIRA" && (
             <div className="space-y-4">
               <div>
-                <Label>Upload Document Scan</Label>
+                <Label>Télécharger le scan du document</Label>
                 <div className="flex items-center space-x-2">
                   <Input
                     type="file"
@@ -1077,11 +1077,11 @@ const VnOrderDetail = () => {
   const currentStageIndex = orderStages.findIndex((s) => s.name === order?.status);
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+    return <div className="flex items-center justify-center min-h-screen">Chargement...</div>;
   }
 
   if (!order) {
-    return <div className="flex items-center justify-center min-h-screen">Order not found</div>;
+    return <div className="flex items-center justify-center min-h-screen">Commande non trouvée</div>;
   }
 
   return (
@@ -1092,14 +1092,14 @@ const VnOrderDetail = () => {
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <div className="flex-1">
-            <h2 className="text-3xl font-bold tracking-tight">Order Details</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Détails de la commande</h2>
             <p className="text-muted-foreground">{order.order_number}</p>
             {canBypassStageValidation() && (
-              <p className="text-sm text-blue-600 font-medium">🔧 Admin Mode: Full stage access enabled</p>
+              <p className="text-sm text-blue-600 font-medium">🔧 Mode Admin : Accès complet aux étapes activé</p>
             )}
           </div>
           <Button variant="outline" onClick={() => navigate(`/dashboard/vn/orders/${id}/edit`)}>
-            Edit Order
+            Modifier la commande
           </Button>
         </div>
 
@@ -1107,7 +1107,7 @@ const VnOrderDetail = () => {
         <div className="grid gap-4 md:grid-cols-3">
           <Card>
             <CardHeader>
-              <CardTitle className="text-sm">Customer</CardTitle>
+              <CardTitle className="text-sm">Client</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-1">
@@ -1119,7 +1119,7 @@ const VnOrderDetail = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-sm">Vehicle</CardTitle>
+              <CardTitle className="text-sm">Véhicule</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-1">
@@ -1135,7 +1135,7 @@ const VnOrderDetail = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-sm">Financial</CardTitle>
+              <CardTitle className="text-sm">Financier</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
@@ -1144,7 +1144,7 @@ const VnOrderDetail = () => {
                   <p className="text-xl font-bold">{formatCurrency(order.total_price)}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground">Remaining</p>
+                  <p className="text-sm text-muted-foreground">Restant</p>
                   <p className="text-lg text-orange-600">
                     {formatCurrency(order.remaining_balance)}
                   </p>
@@ -1157,7 +1157,7 @@ const VnOrderDetail = () => {
         {/* Vertical Timeline */}
         <Card>
           <CardHeader>
-            <CardTitle>Order Progress</CardTitle>
+            <CardTitle>Progrès de la commande</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="relative">
@@ -1215,7 +1215,7 @@ const VnOrderDetail = () => {
                               className="h-8"
                               variant={canBypassStageValidation() ? "default" : "outline"}
                             >
-                              {isCompleted ? 'Completed' : canBypassStageValidation() ? 'Complete (Admin)' : 'Complete'}
+                              {isCompleted ? 'Terminé' : canBypassStageValidation() ? 'Terminer (Admin)' : 'Terminer'}
                             </Button>
                               {requiredDocs.length > 0 && (
                                 <Tooltip>
@@ -1224,7 +1224,7 @@ const VnOrderDetail = () => {
                                   </TooltipTrigger>
                                   <TooltipContent>
                                     <div className="space-y-1">
-                                      <p className="font-semibold">Required Documents:</p>
+                                      <p className="font-semibold">Documents requis :</p>
                                       {requiredDocs.map((doc, i) => (
                                         <p key={i} className="text-sm">• {doc}</p>
                                       ))}
@@ -1242,7 +1242,7 @@ const VnOrderDetail = () => {
                             }
                             return (
                               <div className="text-xs text-muted-foreground mt-1">
-                                Completed: {date.toLocaleDateString()}
+                                Terminé le : {date.toLocaleDateString()}
                               </div>
                             );
                           } catch (error) {

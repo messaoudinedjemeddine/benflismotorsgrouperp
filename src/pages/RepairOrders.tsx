@@ -318,41 +318,41 @@ const RepairOrders = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold gradient-text">Repair Orders</h1>
+        <h1 className="text-3xl font-bold gradient-text">Commandes de réparation</h1>
         {hasRole(['sys_admin', 'director', 'apv']) && (
           <Dialog open={showNewOrderDialog} onOpenChange={setShowNewOrderDialog}>
             <DialogTrigger asChild>
               <Button className="bg-gradient-primary">
                 <Plus className="w-4 h-4 mr-2" />
-                New Repair Order
+                Nouvelle commande de réparation
               </Button>
             </DialogTrigger>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle>Create New Repair Order</DialogTitle>
+                <DialogTitle>Créer une nouvelle commande de réparation</DialogTitle>
               </DialogHeader>
               
               <Tabs defaultValue="client" className="w-full">
                 <TabsList className="grid w-full grid-cols-4">
-                  <TabsTrigger value="client">Client Information</TabsTrigger>
-                  <TabsTrigger value="car">Car Information</TabsTrigger>
-                  <TabsTrigger value="damage">Damage Description</TabsTrigger>
-                  <TabsTrigger value="images">Damage Images</TabsTrigger>
+                  <TabsTrigger value="client">Informations client</TabsTrigger>
+                  <TabsTrigger value="car">Informations véhicule</TabsTrigger>
+                  <TabsTrigger value="damage">Description des dommages</TabsTrigger>
+                  <TabsTrigger value="images">Images des dommages</TabsTrigger>
                 </TabsList>
                 
                 <TabsContent value="client" className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="clientName">Client Name</Label>
+                      <Label htmlFor="clientName">Nom du client</Label>
                       <Input
                         id="clientName"
                         value={newOrder.clientName}
                         onChange={(e) => setNewOrder(prev => ({...prev, clientName: e.target.value}))}
-                        placeholder="Enter client name"
+                        placeholder="Saisissez le nom du client"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="clientPhone">Phone Number</Label>
+                      <Label htmlFor="clientPhone">Numéro de téléphone</Label>
                       <Input
                         id="clientPhone"
                         value={newOrder.clientPhone}
@@ -362,13 +362,13 @@ const RepairOrders = () => {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="clientEmail">Email (Optional)</Label>
+                    <Label htmlFor="clientEmail">Email (Optionnel)</Label>
                     <Input
                       id="clientEmail"
                       type="email"
                       value={newOrder.clientEmail}
                       onChange={(e) => setNewOrder(prev => ({...prev, clientEmail: e.target.value}))}
-                      placeholder="example@email.com"
+                      placeholder="exemple@email.com"
                     />
                   </div>
                 </TabsContent>
@@ -376,7 +376,7 @@ const RepairOrders = () => {
                 <TabsContent value="car" className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="carBrand">Brand</Label>
+                      <Label htmlFor="carBrand">Marque</Label>
                       <Input
                         id="carBrand"
                         value={newOrder.carBrand}
@@ -385,7 +385,7 @@ const RepairOrders = () => {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="carModel">Model</Label>
+                      <Label htmlFor="carModel">Modèle</Label>
                       <Input
                         id="carModel"
                         value={newOrder.carModel}
@@ -395,24 +395,24 @@ const RepairOrders = () => {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="carVin">VIN Number (Optional)</Label>
+                    <Label htmlFor="carVin">Numéro VIN (Optionnel)</Label>
                     <Input
                       id="carVin"
                       value={newOrder.carVin}
                       onChange={(e) => setNewOrder(prev => ({...prev, carVin: e.target.value}))}
-                      placeholder="Vehicle Identification Number"
+                      placeholder="Numéro d'identification du véhicule"
                     />
                   </div>
                 </TabsContent>
                 
                 <TabsContent value="damage" className="space-y-4">
                   <div>
-                    <Label htmlFor="damageDescription">Damage Description</Label>
+                    <Label htmlFor="damageDescription">Description des dommages</Label>
                     <Textarea
                       id="damageDescription"
                       value={newOrder.damageDescription}
                       onChange={(e) => setNewOrder(prev => ({...prev, damageDescription: e.target.value}))}
-                      placeholder="Write a detailed description of the damage found in the car..."
+                      placeholder="Écrivez une description détaillée des dommages trouvés dans la voiture..."
                       className="min-h-32"
                     />
                   </div>
@@ -420,7 +420,7 @@ const RepairOrders = () => {
                 
                 <TabsContent value="images" className="space-y-4">
                   <div>
-                    <Label htmlFor="images">Damage Images</Label>
+                    <Label htmlFor="images">Images des dommages</Label>
                     <Input
                       id="images"
                       type="file"
@@ -456,7 +456,7 @@ const RepairOrders = () => {
                   )}
                   
                   <Button onClick={createRepairOrder} className="w-full bg-gradient-primary">
-                    Create Repair Order
+                    Créer la commande de réparation
                   </Button>
                 </TabsContent>
               </Tabs>
@@ -469,7 +469,7 @@ const RepairOrders = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card className="card-green border-2 border-green/20 hover:border-green/40 transition-all duration-300">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-semibold text-white/90">Price Set</CardTitle>
+            <CardTitle className="text-sm font-semibold text-white/90">Prix défini</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">
@@ -480,7 +480,7 @@ const RepairOrders = () => {
         
         <Card className="card-coral border-2 border-coral/20 hover:border-coral/40 transition-all duration-300">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-semibold text-white/90">Price Not Set</CardTitle>
+            <CardTitle className="text-sm font-semibold text-white/90">Prix non défini</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">
@@ -491,7 +491,7 @@ const RepairOrders = () => {
         
         <Card className="card-blue border-2 border-blue/20 hover:border-blue/40 transition-all duration-300">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-semibold text-white/90">Total Orders</CardTitle>
+            <CardTitle className="text-sm font-semibold text-white/90">Total des commandes</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">{orders.length}</div>
@@ -500,7 +500,7 @@ const RepairOrders = () => {
         
         <Card className="card-primary border-2 border-primary/20 hover:border-primary/40 transition-all duration-300">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-semibold text-white/90">Total Value</CardTitle>
+            <CardTitle className="text-sm font-semibold text-white/90">Valeur totale</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-white">
@@ -513,19 +513,19 @@ const RepairOrders = () => {
       {/* Repair Orders Table */}
       <Card className="border-2 border-border/50 shadow-lg">
         <CardHeader className="border-b border-border/30">
-          <CardTitle className="text-xl font-semibold">All Repair Orders</CardTitle>
-          <CardDescription className="text-muted-foreground">Manage and track repair orders</CardDescription>
+          <CardTitle className="text-xl font-semibold">Toutes les commandes de réparation</CardTitle>
+          <CardDescription className="text-muted-foreground">Gérer et suivre les commandes de réparation</CardDescription>
         </CardHeader>
         <CardContent className="p-0">
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Order ID</TableHead>
+                <TableHead>ID Commande</TableHead>
                 <TableHead>Client</TableHead>
-                <TableHead>Car</TableHead>
-                <TableHead>Damage</TableHead>
-                <TableHead>Price</TableHead>
-                <TableHead>Status</TableHead>
+                <TableHead>Véhicule</TableHead>
+                <TableHead>Dommages</TableHead>
+                <TableHead>Prix</TableHead>
+                <TableHead>Statut</TableHead>
                 <TableHead>Date</TableHead>
                 <TableHead>Actions</TableHead>
               </TableRow>
@@ -538,19 +538,19 @@ const RepairOrders = () => {
                   </TableCell>
                    <TableCell>
                      <div>
-                       <div className="font-semibold text-foreground">{order.clients?.name || 'Unknown Client'}</div>
+                       <div className="font-semibold text-foreground">{order.clients?.name || 'Client inconnu'}</div>
                        <div className="text-sm text-muted-foreground font-medium">{order.clients?.phone_number || 'N/A'}</div>
                      </div>
                    </TableCell>
                    <TableCell>
                      <div className="font-semibold text-foreground bg-muted/50 px-3 py-2 rounded-lg border border-border/50">
-                       <div className="text-sm font-bold text-primary">{order.cars?.brand || 'Unknown'}</div>
+                       <div className="text-sm font-bold text-primary">{order.cars?.brand || 'Inconnu'}</div>
                        <div className="text-sm text-muted-foreground">{order.cars?.model || ''}</div>
                      </div>
                    </TableCell>
                    <TableCell className="max-w-48">
                      <div className="text-sm truncate font-medium text-foreground">
-                       {order.damage_description || 'No description'}
+                       {order.damage_description || 'Aucune description'}
                      </div>
                    </TableCell>
                    <TableCell>
@@ -559,7 +559,7 @@ const RepairOrders = () => {
                          {order.repair_price.toLocaleString()} DA
                        </span>
                      ) : (
-                       <span className="text-muted-foreground font-medium">Not set</span>
+                       <span className="text-muted-foreground font-medium">Non défini</span>
                      )}
                    </TableCell>
                   <TableCell>

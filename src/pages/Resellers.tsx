@@ -83,8 +83,8 @@ const Resellers = () => {
     } catch (error) {
       console.error('Error fetching resellers:', error);
       toast({
-        title: "Error",
-        description: `Failed to fetch resellers: ${error.message}`,
+        title: "Erreur",
+        description: `Échec de la récupération des revendeurs : ${error.message}`,
         variant: "destructive",
       });
     } finally {
@@ -119,9 +119,9 @@ const Resellers = () => {
     try {
       if (!validateAlgerianPhone(newReseller.phone)) {
         toast({
-          title: "Error",
-          description: "Phone number must start with 05, 06, or 07",
-          variant: "destructive",
+        title: "Erreur",
+        description: "Le numéro de téléphone doit commencer par 05, 06 ou 07",
+        variant: "destructive",
         });
         return;
       }
@@ -137,8 +137,8 @@ const Resellers = () => {
       if (error) throw error;
 
       toast({
-        title: "Successfully Added",
-        description: "New reseller has been added",
+        title: "Ajouté avec Succès",
+        description: "Le nouveau revendeur a été ajouté",
       });
 
       setShowAddResellerDialog(false);
@@ -147,7 +147,7 @@ const Resellers = () => {
 
     } catch (error: any) {
       toast({
-        title: "Error Adding Reseller",
+        title: "Erreur lors de l'Ajout",
         description: error.message,
         variant: "destructive",
       });
@@ -181,18 +181,18 @@ const Resellers = () => {
     try {
       if (!selectedFile) {
         toast({
-          title: "Error",
-          description: "Please select an Excel file",
-          variant: "destructive",
+        title: "Erreur",
+        description: "Veuillez sélectionner un fichier Excel",
+        variant: "destructive",
         });
         return;
       }
 
       if (selectedResellers.length === 0) {
         toast({
-          title: "Error",
-          description: "Please select at least one reseller",
-          variant: "destructive",
+        title: "Erreur",
+        description: "Veuillez sélectionner au moins un revendeur",
+        variant: "destructive",
         });
         return;
       }
@@ -252,7 +252,7 @@ const Resellers = () => {
 
     } catch (error: any) {
       toast({
-        title: "Error Launching Campaign",
+        title: "Erreur lors du Lancement",
         description: error.message,
         variant: "destructive",
       });
@@ -307,8 +307,8 @@ const Resellers = () => {
         window.open(mailtoUrl, '_blank');
         
         toast({
-          title: "Outlook Opened",
-          description: `Email client opened with ${selectedResellersData.length} resellers. Excel file downloaded for attachment.`,
+        title: "Outlook Ouvert",
+        description: `Client email ouvert avec ${selectedResellersData.length} revendeurs. Fichier Excel téléchargé pour pièce jointe.`,
         });
       }
 
@@ -324,40 +324,40 @@ const Resellers = () => {
           
           if (selectedResellersData.length > 1) {
             toast({
-              title: "WhatsApp Opened",
-              description: `WhatsApp opened for first reseller. You have ${selectedResellersData.length - 1} more resellers to contact.`,
+              title: "WhatsApp Ouvert",
+              description: `WhatsApp ouvert pour le premier revendeur. Vous avez ${selectedResellersData.length - 1} autres revendeurs à contacter.`,
             });
           } else {
             toast({
-              title: "WhatsApp Opened",
-              description: `WhatsApp opened with message for the reseller.`,
+              title: "WhatsApp Ouvert",
+              description: `WhatsApp ouvert avec message pour le revendeur.`,
             });
           }
         }
       }
 
       // Show success message with reseller details
-      let successMessage = `Campaign prepared successfully!\n`;
-      successMessage += `Resellers: ${selectedResellersData.length}\n`;
-      successMessage += `Communication: ${communicationType}\n`;
-      successMessage += `Excel file: ${excelFileUrl}`;
+      let successMessage = `Campagne préparée avec succès !\n`;
+      successMessage += `Revendeurs : ${selectedResellersData.length}\n`;
+      successMessage += `Communication : ${communicationType}\n`;
+      successMessage += `Fichier Excel : ${excelFileUrl}`;
 
       // If WhatsApp is selected, show reseller phone numbers for manual sending
       if (communicationType === 'whatsapp' || communicationType === 'both') {
         console.log('Reseller phone numbers for manual WhatsApp sending:', phoneNumbers);
-        successMessage += `\n\nReseller phone numbers: ${phoneNumbers}`;
+        successMessage += `\n\nNuméros de téléphone des revendeurs : ${phoneNumbers}`;
       }
 
       toast({
-        title: "Campaign Ready",
+        title: "Campagne Prête",
         description: successMessage,
       });
 
     } catch (error: any) {
       console.error('Campaign preparation error:', error);
       toast({
-        title: "Campaign Preparation Failed",
-        description: `Failed to prepare campaign: ${error.message}`,
+        title: "Échec de la Préparation",
+        description: `Échec de la préparation de la campagne : ${error.message}`,
         variant: "destructive",
       });
     }
@@ -394,44 +394,44 @@ const Resellers = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold gradient-text">Reseller Management</h1>
+        <h1 className="text-3xl font-bold gradient-text">Gestion des Revendeurs</h1>
         <div className="flex gap-2">
           <Dialog open={showAddResellerDialog} onOpenChange={setShowAddResellerDialog}>
             <DialogTrigger asChild>
               <Button variant="outline">
                 <UserPlus className="w-4 h-4 mr-2" />
-                Add Reseller
+                Ajouter un Revendeur
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Add New Reseller</DialogTitle>
+                <DialogTitle>Ajouter un Nouveau Revendeur</DialogTitle>
               </DialogHeader>
               
               <div className="space-y-4">
                 <div>
-                  <Label htmlFor="resellerName">Reseller Name</Label>
+                  <Label htmlFor="resellerName">Nom du Revendeur</Label>
                   <Input
                     id="resellerName"
                     value={newReseller.name}
                     onChange={(e) => setNewReseller(prev => ({...prev, name: e.target.value}))}
-                    placeholder="Enter reseller name"
+                    placeholder="Entrez le nom du revendeur"
                   />
                 </div>
                 
                 <div>
-                  <Label htmlFor="resellerEmail">Email Address</Label>
+                  <Label htmlFor="resellerEmail">Adresse Email</Label>
                   <Input
                     id="resellerEmail"
                     type="email"
                     value={newReseller.email}
                     onChange={(e) => setNewReseller(prev => ({...prev, email: e.target.value}))}
-                    placeholder="example@email.com"
+                    placeholder="exemple@email.com"
                   />
                 </div>
                 
                 <div>
-                  <Label htmlFor="resellerPhone">Phone Number</Label>
+                  <Label htmlFor="resellerPhone">Numéro de Téléphone</Label>
                   <Input
                     id="resellerPhone"
                     value={newReseller.phone}
@@ -441,7 +441,7 @@ const Resellers = () => {
                 </div>
                 
                 <Button onClick={addReseller} className="w-full bg-gradient-primary">
-                  Add Reseller
+                  Ajouter le Revendeur
                 </Button>
               </div>
             </DialogContent>
@@ -451,12 +451,12 @@ const Resellers = () => {
             <DialogTrigger asChild>
               <Button className="bg-gradient-primary">
                 <Send className="w-4 h-4 mr-2" />
-                Launch Campaign
+                Lancer une Campagne
               </Button>
             </DialogTrigger>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
-                <DialogTitle>Launch Promotional Campaign</DialogTitle>
+                <DialogTitle>Lancer une Campagne Promotionnelle</DialogTitle>
               </DialogHeader>
               
               <div className="space-y-6">
@@ -479,22 +479,22 @@ const Resellers = () => {
                 {promoStep === 1 && (
                   <Card>
                     <CardHeader>
-                      <CardTitle>Step 1: Upload Excel File</CardTitle>
-                      <CardDescription>Choose the file containing products and offers</CardDescription>
+                    <CardTitle>Étape 1 : Télécharger le Fichier Excel</CardTitle>
+                    <CardDescription>Choisissez le fichier contenant les produits et offres</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div>
-                        <Label htmlFor="campaignName">Campaign Name</Label>
+                        <Label htmlFor="campaignName">Nom de la Campagne</Label>
                         <Input
                           id="campaignName"
                           value={campaignName}
                           onChange={(e) => setCampaignName(e.target.value)}
-                          placeholder="Enter campaign name"
+                          placeholder="Entrez le nom de la campagne"
                         />
                       </div>
                       
                       <div>
-                        <Label htmlFor="excel-file">Excel File</Label>
+                        <Label htmlFor="excel-file">Fichier Excel</Label>
                         <Input
                           id="excel-file"
                           type="file"
@@ -504,7 +504,7 @@ const Resellers = () => {
                         />
                         {selectedFile && (
                           <div className="mt-2 text-sm text-muted-foreground">
-                            Selected file: {selectedFile.name}
+                            Fichier sélectionné : {selectedFile.name}
                           </div>
                         )}
                       </div>
@@ -514,7 +514,7 @@ const Resellers = () => {
                         disabled={!selectedFile || !campaignName}
                         className="w-full bg-gradient-primary"
                       >
-                        Next
+                        Suivant
                       </Button>
                     </CardContent>
                   </Card>
@@ -524,19 +524,19 @@ const Resellers = () => {
                 {promoStep === 2 && (
                   <Card>
                     <CardHeader>
-                      <CardTitle>Step 2: Select Resellers</CardTitle>
-                      <CardDescription>Choose resellers to send the campaign to</CardDescription>
+                    <CardTitle>Étape 2 : Sélectionner les Revendeurs</CardTitle>
+                    <CardDescription>Choisissez les revendeurs à qui envoyer la campagne</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div className="flex gap-2">
                         <Button variant="outline" onClick={selectAllResellers}>
-                          Select All
+                          Tout Sélectionner
                         </Button>
                         <Button variant="outline" onClick={clearSelection}>
-                          Clear Selection
+                          Effacer la Sélection
                         </Button>
                         <div className="text-sm text-muted-foreground flex items-center">
-                          Selected: {selectedResellers.length} of {resellers.length}
+                          Sélectionnés : {selectedResellers.length} sur {resellers.length}
                         </div>
                       </div>
                       
@@ -558,14 +558,14 @@ const Resellers = () => {
                       
                       <div className="flex gap-2">
                         <Button variant="outline" onClick={() => setPromoStep(1)}>
-                          Previous
+                          Précédent
                         </Button>
                         <Button 
                           onClick={() => setPromoStep(3)}
                           disabled={selectedResellers.length === 0}
                           className="bg-gradient-primary"
                         >
-                          Next
+                          Suivant
                         </Button>
                       </div>
                     </CardContent>
@@ -576,12 +576,12 @@ const Resellers = () => {
                 {promoStep === 3 && (
                   <Card>
                     <CardHeader>
-                      <CardTitle>Step 3: Choose Communication Method</CardTitle>
-                      <CardDescription>Select how to send the campaign to resellers</CardDescription>
+                    <CardTitle>Étape 3 : Choisir la Méthode de Communication</CardTitle>
+                    <CardDescription>Sélectionnez comment envoyer la campagne aux revendeurs</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                       <div>
-                        <Label>Communication Method</Label>
+                        <Label>Méthode de Communication</Label>
                         <div className="grid grid-cols-3 gap-4 mt-2">
                           <Card 
                             className={`cursor-pointer transition-colors ${communicationType === 'email' ? 'border-primary bg-primary/10' : ''}`}
@@ -612,30 +612,30 @@ const Resellers = () => {
                                 <Mail className="w-6 h-6 mr-1" />
                                 <MessageSquare className="w-6 h-6" />
                               </div>
-                              <div className="font-medium">Both</div>
+                              <div className="font-medium">Les Deux</div>
                             </CardContent>
                           </Card>
                         </div>
                       </div>
                       
                       <div>
-                        <Label htmlFor="predefinedMessage">Predefined Message (Optional)</Label>
+                        <Label htmlFor="predefinedMessage">Message Pré-défini (Optionnel)</Label>
                         <Textarea
                           id="predefinedMessage"
                           value={predefinedMessage}
                           onChange={(e) => setPredefinedMessage(e.target.value)}
-                          placeholder="Enter a message to include with the campaign..."
+                          placeholder="Entrez un message à inclure avec la campagne..."
                           rows={4}
                         />
                       </div>
                       
                       <div className="bg-muted p-4 rounded-lg">
-                        <h4 className="font-medium mb-2">Campaign Summary:</h4>
+                        <h4 className="font-medium mb-2">Résumé de la Campagne :</h4>
                         <ul className="text-sm space-y-1">
-                          <li><strong>File:</strong> {selectedFile?.name}</li>
-                          <li><strong>Number of Resellers:</strong> {selectedResellers.length}</li>
-                          <li><strong>Resellers:</strong> {getSelectedResellersNames()}</li>
-                          <li><strong>Communication Method:</strong> {
+                          <li><strong>Fichier :</strong> {selectedFile?.name}</li>
+                          <li><strong>Nombre de Revendeurs :</strong> {selectedResellers.length}</li>
+                          <li><strong>Revendeurs :</strong> {getSelectedResellersNames()}</li>
+                          <li><strong>Méthode de Communication :</strong> {
                             communicationType === 'email' ? 'Email' :
                             communicationType === 'whatsapp' ? 'WhatsApp' : 'Email & WhatsApp'
                           }</li>
@@ -644,10 +644,10 @@ const Resellers = () => {
                       
                       <div className="flex gap-2">
                         <Button variant="outline" onClick={() => setPromoStep(2)}>
-                          Previous
+                          Précédent
                         </Button>
                         <Button onClick={launchCampaign} className="bg-gradient-primary">
-                          Launch Campaign
+                          Lancer la Campagne
                         </Button>
                       </div>
                     </CardContent>
@@ -661,24 +661,24 @@ const Resellers = () => {
 
       <Tabs defaultValue="resellers" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="resellers">Resellers</TabsTrigger>
-          <TabsTrigger value="campaigns">Campaign History</TabsTrigger>
+          <TabsTrigger value="resellers">Revendeurs</TabsTrigger>
+          <TabsTrigger value="campaigns">Historique des Campagnes</TabsTrigger>
         </TabsList>
 
         <TabsContent value="resellers">
           <Card>
             <CardHeader>
-              <CardTitle>All Resellers</CardTitle>
-              <CardDescription>Manage reseller database</CardDescription>
+              <CardTitle>Tous les Revendeurs</CardTitle>
+              <CardDescription>Gérer la base de données des revendeurs</CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Name</TableHead>
+                    <TableHead>Nom</TableHead>
                     <TableHead>Email</TableHead>
-                    <TableHead>Phone Number</TableHead>
-                    <TableHead>Date Added</TableHead>
+                    <TableHead>Numéro de Téléphone</TableHead>
+                    <TableHead>Date d'Ajout</TableHead>
                     <TableHead>Actions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -693,7 +693,7 @@ const Resellers = () => {
                       </TableCell>
                       <TableCell>
                         <Button variant="outline" size="sm">
-                          Edit
+                          Modifier
                         </Button>
                       </TableCell>
                     </TableRow>
@@ -707,18 +707,18 @@ const Resellers = () => {
         <TabsContent value="campaigns">
           <Card>
             <CardHeader>
-              <CardTitle>Campaign History</CardTitle>
-              <CardDescription>View all promotional campaigns</CardDescription>
+              <CardTitle>Historique des Campagnes</CardTitle>
+              <CardDescription>Voir toutes les campagnes promotionnelles</CardDescription>
             </CardHeader>
             <CardContent>
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Campaign Name</TableHead>
+                    <TableHead>Nom de la Campagne</TableHead>
                     <TableHead>Date</TableHead>
-                    <TableHead>File</TableHead>
-                    <TableHead>Number of Resellers</TableHead>
-                    <TableHead>Communication Method</TableHead>
+                    <TableHead>Fichier</TableHead>
+                    <TableHead>Nombre de Revendeurs</TableHead>
+                    <TableHead>Méthode de Communication</TableHead>
                     <TableHead>Actions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -736,7 +736,7 @@ const Resellers = () => {
                           onClick={() => window.open(campaign.excel_file_url, '_blank')}
                         >
                           <Upload className="w-4 h-4 mr-1" />
-                          View File
+                          Voir le Fichier
                         </Button>
                       </TableCell>
                       <TableCell>{campaign.campaign_resellers?.length || 0}</TableCell>

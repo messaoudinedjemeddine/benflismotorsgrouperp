@@ -71,11 +71,11 @@ export default function AdminTickets() {
       if (error) throw error;
     },
     onSuccess: () => {
-      toast.success("Ticket status updated");
+      toast.success("Statut du ticket mis à jour");
       queryClient.invalidateQueries({ queryKey: ["admin-tickets"] });
     },
     onError: (error) => {
-      toast.error("Failed to update status: " + error.message);
+      toast.error("Échec de la mise à jour du statut : " + error.message);
     },
   });
 
@@ -102,8 +102,8 @@ export default function AdminTickets() {
     return (
       <div className="container mx-auto py-6">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Authentication Required</h1>
-          <p className="text-gray-600">Please log in to access this page.</p>
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Authentification Requise</h1>
+          <p className="text-gray-600">Veuillez vous connecter pour accéder à cette page.</p>
         </div>
       </div>
     );
@@ -113,8 +113,8 @@ export default function AdminTickets() {
     return (
       <div className="container mx-auto py-6">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h1>
-          <p className="text-gray-600 mb-4">You don't have permission to access this page.</p>
+          <h1 className="text-2xl font-bold text-red-600 mb-4">Accès Refusé</h1>
+          <p className="text-gray-600 mb-4">Vous n'avez pas la permission d'accéder à cette page.</p>
           <div className="text-sm text-gray-500">
             Debug Info: User={user ? 'Yes' : 'No'}, Role={userRole || 'None'}, HasAdmin={hasRole(['sys_admin', 'director']) ? 'Yes' : 'No'}
           </div>
@@ -128,8 +128,8 @@ export default function AdminTickets() {
         <div className="flex items-center gap-2">
           <Ticket className="w-8 h-8" />
           <div>
-            <h1 className="text-3xl font-bold">Support Tickets Management</h1>
-            <p className="text-muted-foreground">View and manage all user support tickets</p>
+            <h1 className="text-3xl font-bold">Gestion des Tickets de Support</h1>
+            <p className="text-muted-foreground">Voir et gérer tous les tickets de support des utilisateurs</p>
             <div className="text-sm text-gray-500 mt-2">
               Debug: User={user ? 'Yes' : 'No'}, Role={userRole || 'None'}, HasAdmin={hasRole(['sys_admin', 'director']) ? 'Yes' : 'No'}
             </div>
@@ -138,21 +138,21 @@ export default function AdminTickets() {
 
         <Card>
           <CardHeader>
-            <CardTitle>All Tickets</CardTitle>
+            <CardTitle>Tous les Tickets</CardTitle>
           </CardHeader>
           <CardContent>
             {isLoading ? (
-              <p>Loading tickets...</p>
+              <p>Chargement des tickets...</p>
             ) : tickets && tickets.length > 0 ? (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>User</TableHead>
-                    <TableHead>Subject</TableHead>
+                    <TableHead>Utilisateur</TableHead>
+                    <TableHead>Sujet</TableHead>
                     <TableHead>Description</TableHead>
-                    <TableHead>Priority</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead>Created</TableHead>
+                    <TableHead>Priorité</TableHead>
+                    <TableHead>Statut</TableHead>
+                    <TableHead>Créé</TableHead>
                     <TableHead>Actions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -193,9 +193,9 @@ export default function AdminTickets() {
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="open">Open</SelectItem>
-                            <SelectItem value="in_progress">In Progress</SelectItem>
-                            <SelectItem value="closed">Closed</SelectItem>
+                            <SelectItem value="open">Ouvert</SelectItem>
+                            <SelectItem value="in_progress">En Cours</SelectItem>
+                            <SelectItem value="closed">Fermé</SelectItem>
                           </SelectContent>
                         </Select>
                       </TableCell>
@@ -204,7 +204,7 @@ export default function AdminTickets() {
                 </TableBody>
               </Table>
             ) : (
-              <p className="text-center py-8 text-muted-foreground">No tickets found</p>
+              <p className="text-center py-8 text-muted-foreground">Aucun ticket trouvé</p>
             )}
           </CardContent>
         </Card>

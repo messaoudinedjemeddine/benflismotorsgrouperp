@@ -70,14 +70,14 @@ const VnNewOrder = () => {
       if (error) throw error;
 
       toast({
-        title: "Success",
-        description: "Order created successfully",
+        title: "Succès",
+        description: "Commande créée avec succès",
       });
 
       navigate("/dashboard/vn/orders");
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -97,20 +97,20 @@ const VnNewOrder = () => {
           <ArrowLeft className="h-4 w-4" />
         </Button>
         <div>
-          <h2 className="text-3xl font-bold tracking-tight">New Order</h2>
-          <p className="text-muted-foreground">Create a new vehicle order</p>
+          <h2 className="text-3xl font-bold tracking-tight">Nouvelle Commande</h2>
+          <p className="text-muted-foreground">Créer une nouvelle commande de véhicule</p>
         </div>
       </div>
 
       <form onSubmit={handleSubmit}>
         <Card>
           <CardHeader>
-            <CardTitle>Customer Information</CardTitle>
+            <CardTitle>Informations Client</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="customer_name">Full Name *</Label>
+                <Label htmlFor="customer_name">Nom Complet *</Label>
                 <Input
                   id="customer_name"
                   required
@@ -119,7 +119,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="customer_phone">Phone Number *</Label>
+                <Label htmlFor="customer_phone">Numéro de Téléphone *</Label>
                 <Input
                   id="customer_phone"
                   required
@@ -128,7 +128,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="customer_id_number">ID Number (18 digits) *</Label>
+                <Label htmlFor="customer_id_number">Numéro d'Identité (18 chiffres) *</Label>
                 <Input
                   id="customer_id_number"
                   required
@@ -147,7 +147,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="customer_address">Address</Label>
+                <Label htmlFor="customer_address">Adresse</Label>
                 <Textarea
                   id="customer_address"
                   value={formData.customer_address}
@@ -160,12 +160,12 @@ const VnNewOrder = () => {
 
         <Card className="mt-6">
           <CardHeader>
-            <CardTitle>Vehicle Information</CardTitle>
+            <CardTitle>Informations Véhicule</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="vehicle_brand">Brand *</Label>
+                <Label htmlFor="vehicle_brand">Marque *</Label>
                 <Input
                   id="vehicle_brand"
                   required
@@ -174,7 +174,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="vehicle_model">Model *</Label>
+                <Label htmlFor="vehicle_model">Modèle *</Label>
                 <Input
                   id="vehicle_model"
                   required
@@ -183,7 +183,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="vehicle_year">Year</Label>
+                <Label htmlFor="vehicle_year">Année</Label>
                 <Input
                   id="vehicle_year"
                   type="number"
@@ -192,7 +192,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="vehicle_color">Color</Label>
+                <Label htmlFor="vehicle_color">Couleur</Label>
                 <Input
                   id="vehicle_color"
                   value={formData.vehicle_color}
@@ -208,7 +208,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="location">Location *</Label>
+                <Label htmlFor="location">Localisation *</Label>
                 <Select
                   value={formData.location}
                   onValueChange={(value) => handleChange("location", value)}
@@ -224,7 +224,7 @@ const VnNewOrder = () => {
                 </Select>
               </div>
               <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="vehicle_avaries">Damages/Avaries</Label>
+                <Label htmlFor="vehicle_avaries">Dommages/Avaries</Label>
                 <Textarea
                   id="vehicle_avaries"
                   value={formData.vehicle_avaries}
@@ -237,12 +237,12 @@ const VnNewOrder = () => {
 
         <Card className="mt-6">
           <CardHeader>
-            <CardTitle>Payment Information</CardTitle>
+            <CardTitle>Informations de Paiement</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="total_price">Total Price (DZD)</Label>
+                <Label htmlFor="total_price">Prix Total (DZD)</Label>
                 <Input
                   id="total_price"
                   type="number"
@@ -251,7 +251,7 @@ const VnNewOrder = () => {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="advance_payment">Advance Payment (DZD)</Label>
+                <Label htmlFor="advance_payment">Acompte (DZD)</Label>
                 <Input
                   id="advance_payment"
                   type="number"
@@ -269,10 +269,10 @@ const VnNewOrder = () => {
             variant="outline"
             onClick={() => navigate("/dashboard/vn/orders")}
           >
-            Cancel
+            Annuler
           </Button>
           <Button type="submit" disabled={loading}>
-            {loading ? "Creating..." : "Create Order"}
+            {loading ? "Création..." : "Créer la Commande"}
           </Button>
         </div>
       </form>

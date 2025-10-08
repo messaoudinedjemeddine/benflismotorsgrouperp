@@ -32,12 +32,12 @@ const SeedUsers = () => {
       const successCount = data.results.filter((r: SeedResult) => r.status === 'success').length;
 
       toast({
-        title: "Users Created",
-        description: `Successfully created ${successCount} out of ${data.results.length} users`,
+        title: "Utilisateurs créés",
+        description: `${successCount} utilisateurs créés avec succès sur ${data.results.length}`,
       });
     } catch (error: any) {
       toast({
-        title: "Error",
+        title: "Erreur",
         description: error.message,
         variant: "destructive",
       });
@@ -49,15 +49,15 @@ const SeedUsers = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold tracking-tight">Seed Test Users</h2>
-        <p className="text-muted-foreground">Create test users for all roles</p>
+        <h2 className="text-3xl font-bold tracking-tight">Créer des utilisateurs de test</h2>
+        <p className="text-muted-foreground">Créer des utilisateurs de test pour tous les rôles</p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Create Test Accounts</CardTitle>
+          <CardTitle>Créer des comptes de test</CardTitle>
           <CardDescription>
-            This will create 10 test user accounts with different roles:
+            Ceci créera 10 comptes d'utilisateurs de test avec différents rôles :
             sys_admin, director, cdv, commercial, magasin, apv, ged, adv, livraison, immatriculation
           </CardDescription>
         </CardHeader>
@@ -66,19 +66,19 @@ const SeedUsers = () => {
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Creating Users...
+                Création des utilisateurs...
               </>
             ) : (
               <>
                 <Users className="mr-2 h-4 w-4" />
-                Create All Test Users
+                Créer tous les utilisateurs de test
               </>
             )}
           </Button>
 
           {results.length > 0 && (
             <div className="space-y-2 mt-6">
-              <h3 className="font-semibold">Results:</h3>
+              <h3 className="font-semibold">Résultats :</h3>
               {results.map((result, index) => (
                 <div
                   key={index}
@@ -104,7 +104,7 @@ const SeedUsers = () => {
           )}
 
           <div className="mt-6 p-4 bg-muted rounded-lg">
-            <h4 className="font-semibold mb-2">Test User Credentials:</h4>
+            <h4 className="font-semibold mb-2">Identifiants des utilisateurs de test :</h4>
             <div className="space-y-1 text-sm">
               <p><strong>Admin:</strong> admin@benflismotors.com / Admin123!</p>
               <p><strong>Director:</strong> director@benflismotors.com / Director123!</p>

@@ -171,15 +171,15 @@ const Dashboard = () => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Welcome back, {profile?.full_name?.split(' ')[0] || 'User'}!
+              Bon retour, {profile?.full_name?.split(' ')[0] || 'Utilisateur'} !
             </h1>
             <p className="text-gray-600 flex items-center gap-2">
               <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
-              {userRole ? getRoleDisplayName(userRole) : 'User'} • Benflis Motors Group ERP
+              {userRole ? getRoleDisplayName(userRole) : 'Utilisateur'} • Benflis Motors Group ERP
             </p>
           </div>
           <div className="text-right">
-            <p className="text-sm text-gray-500">Today</p>
+            <p className="text-sm text-gray-500">Aujourd'hui</p>
             <p className="text-lg font-semibold text-gray-900">{new Date().toLocaleDateString()}</p>
           </div>
         </div>
@@ -198,12 +198,12 @@ const Dashboard = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-2xl font-bold text-white">{stats.partsOrders.total}</p>
-                    <p className="text-white/80 text-sm">Parts Orders</p>
+                    <p className="text-white/80 text-sm">Commandes de pièces</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between text-white/90 text-sm">
-                  <span>Ready: {stats.partsOrders.ready}</span>
-                  <span>Pending: {stats.partsOrders.notReady}</span>
+                  <span>Prêtes: {stats.partsOrders.ready}</span>
+                  <span>En attente: {stats.partsOrders.notReady}</span>
                 </div>
                 <div className="text-white/80 text-xs">
                   {stats.partsOrders.totalValue.toLocaleString()} DA
@@ -224,12 +224,12 @@ const Dashboard = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-2xl font-bold text-white">{stats.repairOrders.total}</p>
-                    <p className="text-white/80 text-sm">Repair Orders</p>
+                    <p className="text-white/80 text-sm">Commandes de réparation</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between text-white/90 text-sm">
-                  <span>Priced: {stats.repairOrders.priceSet}</span>
-                  <span>Pending: {stats.repairOrders.priceNotSet}</span>
+                  <span>Tarifiées: {stats.repairOrders.priceSet}</span>
+                  <span>En attente: {stats.repairOrders.priceNotSet}</span>
                 </div>
                 <div className="text-white/80 text-xs">
                   {stats.repairOrders.totalValue.toLocaleString()} DA
@@ -250,12 +250,12 @@ const Dashboard = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-2xl font-bold text-white">{stats.clientVisits.total}</p>
-                    <p className="text-white/80 text-sm">Client Visits</p>
+                    <p className="text-white/80 text-sm">Visites clients</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-between text-white/90 text-sm">
-                  <span>Recent: {stats.clientVisits.lessThanMonth}</span>
-                  <span>Old: {stats.clientVisits.moreThanYear}</span>
+                  <span>Récentes: {stats.clientVisits.lessThanMonth}</span>
+                  <span>Anciennes: {stats.clientVisits.moreThanYear}</span>
                 </div>
               </CardContent>
             </Card>
@@ -273,11 +273,11 @@ const Dashboard = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-2xl font-bold text-white">{stats.resellers.total}</p>
-                    <p className="text-white/80 text-sm">Active Resellers</p>
+                    <p className="text-white/80 text-sm">Revendeurs actifs</p>
                   </div>
                 </div>
                 <div className="text-white/80 text-xs">
-                  Total registered partners
+                  Partenaires enregistrés au total
                 </div>
               </CardContent>
             </Card>
@@ -287,7 +287,7 @@ const Dashboard = () => {
 
       {/* Quick Actions */}
       <div className="animate-slide-up" style={{ animationDelay: '0.5s' }}>
-        <h2 className="text-2xl font-bold text-foreground mb-6">Quick Actions</h2>
+        <h2 className="text-2xl font-bold text-foreground mb-6">Actions rapides</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {hasRole(['sys_admin', 'director', 'magasin']) && (
             <Link to="/dashboard/parts-orders">
@@ -298,12 +298,12 @@ const Dashboard = () => {
                       <ShoppingBag className="h-5 w-5 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-foreground">Parts Orders</h3>
-                      <p className="text-sm text-muted-foreground">Manage inventory</p>
+                      <h3 className="font-semibold text-foreground">Commandes de pièces</h3>
+                      <p className="text-sm text-muted-foreground">Gérer l'inventaire</p>
                     </div>
                   </div>
                   <div className="flex items-center text-xs text-blue-600 font-medium group-hover:text-blue-700">
-                    Open Module
+                    Ouvrir le module
                     <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </CardContent>
@@ -320,12 +320,12 @@ const Dashboard = () => {
                       <Settings className="h-5 w-5 text-green-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-foreground">Repair Orders</h3>
-                      <p className="text-sm text-muted-foreground">Vehicle repairs</p>
+                      <h3 className="font-semibold text-foreground">Commandes de réparation</h3>
+                      <p className="text-sm text-muted-foreground">Réparations véhicules</p>
                     </div>
                   </div>
                   <div className="flex items-center text-xs text-green-600 font-medium group-hover:text-green-700">
-                    Open Module
+                    Ouvrir le module
                     <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </CardContent>
@@ -342,12 +342,12 @@ const Dashboard = () => {
                       <Calendar className="h-5 w-5 text-purple-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-foreground">Client Visits</h3>
-                      <p className="text-sm text-muted-foreground">Visit tracking</p>
+                      <h3 className="font-semibold text-foreground">Visites clients</h3>
+                      <p className="text-sm text-muted-foreground">Suivi des visites</p>
                     </div>
                   </div>
                   <div className="flex items-center text-xs text-purple-600 font-medium group-hover:text-purple-700">
-                    Open Module
+                    Ouvrir le module
                     <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </CardContent>
@@ -364,12 +364,12 @@ const Dashboard = () => {
                       <Store className="h-5 w-5 text-orange-600" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-foreground">Resellers</h3>
-                      <p className="text-sm text-muted-foreground">Partner network</p>
+                      <h3 className="font-semibold text-foreground">Revendeurs</h3>
+                      <p className="text-sm text-muted-foreground">Réseau de partenaires</p>
                     </div>
                   </div>
                   <div className="flex items-center text-xs text-orange-600 font-medium group-hover:text-orange-700">
-                    Open Module
+                    Ouvrir le module
                     <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </CardContent>
@@ -385,7 +385,7 @@ const Dashboard = () => {
           <CardHeader className="pb-4">
             <div className="flex items-center gap-2">
               <Activity className="h-5 w-5 text-foreground" />
-              <CardTitle className="text-lg">System Status</CardTitle>
+              <CardTitle className="text-lg">État du système</CardTitle>
             </div>
           </CardHeader>
           <CardContent>
@@ -393,22 +393,22 @@ const Dashboard = () => {
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <div>
-                  <p className="font-medium text-foreground">Database</p>
-                  <p className="text-sm text-muted-foreground">Connected & Running</p>
+                  <p className="font-medium text-foreground">Base de données</p>
+                  <p className="text-sm text-muted-foreground">Connectée et active</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <div>
-                  <p className="font-medium text-foreground">Authentication</p>
-                  <p className="text-sm text-muted-foreground">Active & Secure</p>
+                  <p className="font-medium text-foreground">Authentification</p>
+                  <p className="text-sm text-muted-foreground">Active et sécurisée</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <div>
-                  <p className="font-medium text-foreground">File Storage</p>
-                  <p className="text-sm text-muted-foreground">Operational</p>
+                  <p className="font-medium text-foreground">Stockage de fichiers</p>
+                  <p className="text-sm text-muted-foreground">Opérationnel</p>
                 </div>
               </div>
             </div>

@@ -25,6 +25,7 @@ import OrderAccessoriesDetail from "./pages/OrderAccessoriesDetail";
 import SupportTickets from "./pages/SupportTickets";
 import AdminTickets from "./pages/AdminTickets";
 import Users from "./pages/Users";
+import DebugUserRole from "./pages/DebugUserRole";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -128,6 +129,11 @@ const App = () => (
               <Route path="users" element={
                 <ProtectedRoute allowedRoles={['sys_admin']}>
                   <Users />
+                </ProtectedRoute>
+              } />
+              <Route path="debug-role" element={
+                <ProtectedRoute>
+                  <DebugUserRole />
                 </ProtectedRoute>
               } />
             </Route>
